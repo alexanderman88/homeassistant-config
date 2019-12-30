@@ -1,0 +1,51 @@
+
+- platform: group
+  name: Master Bedroom Lights
+  entities:
+    - light.bed_lamp
+    - light.desk_lamp
+    - light.desk_lightstrip
+    - light.alexs_lamp
+    - light.danas_lamp
+
+- platform: group
+  name: Bed Lights
+  entities:
+    - light.alexs_lamp
+    - light.danas_lamp
+
+- platform: group
+  name: Desk Lights
+  entities:
+    - light.desk_lightstrip
+    - light.desk_lamp
+
+- platform: group
+  name: Kitchen Lights
+  entities:
+    - light.kitchen_sink
+    - light.kitchen_table
+    - light.kitchen_ceiling_light
+
+- platform: group
+  name: Outside Lights
+  entities:
+    - light.front_door
+    - light.back_door
+
+- platform: group
+  name: Lamps
+  entities:
+    - light.family_floor_lamp
+    - light.family_right_lamp
+    - light.family_left_lamp
+
+- platform: group
+  name: Family Room Lights
+  entities:
+    - light.family_floor_lamp
+    - light.family_left_lamp
+    - light.family_right_lamp
+    - light.wled_family_ceiling
+    - light.hallway_strip
+    - light.front_hallway

@@ -1,0 +1,38 @@
+Master Bedroom Lights:
+  entities:
+  - light.bed_lamp
+  - light.desk_lamp
+  - light.desk_lightstrip
+  - light.alexs_lamp
+  - light.danas_lamp
+
+Desk Lights:
+  entities:
+  - light.desk_lightstrip
+  - light.bed_lamp
+
+Outside Lights:
+  entities:
+  - light.front_door
+  - light.back_door
+
+Kitchen Lights:
+  entities:
+  - light.kitchen_sink
+  - light.kitchen_table
+  - light.kitchen_ceiling_light
+
+Family Room Lights:
+  - light.family_right_lamp
+  - light.family_left_lamp
+  - light.family_floor_lamp
+  - light.wled_family_ceiling
+  - light.hallway_strip
+
+Decorations:
+  entities:
+  - switch.christmas_tree
+  - switch.entry_decorations
+  - switch.family_door_decorations
+  - switch.family_window_decorations
+  - switch.kitchen_window_decorations

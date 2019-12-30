@@ -1,0 +1,64 @@
+fan_light_toggle:
+  sequence:
+    - service: script.turn_on
+      data_template:
+        entity_id: >
+          {% if is_state("sensor.last_alexa", "media_player.guest_bedroom_echo_dot") %}
+            script.south_bedroom_light_toggle
+          {% elif is_state("sensor.last_alexa", "media_player.second_bedroom_echo_dot") %}
+            script.north_bedroom_light_toggle
+          {% else %}
+            script.master_bedroom_light_toggle
+          {% endif %}
+
+fan_high:
+  sequence:
+    - service: script.turn_on
+      data_template:
+        entity_id: >
+          {% if is_state("sensor.last_alexa", "media_player.guest_bedroom_echo_dot") %}
+            script.south_bedroom_fan_high
+          {% elif is_state("sensor.last_alexa", "media_player.second_bedroom_echo_dot") %}
+            script.north_bedroom_fan_high
+          {% else %}
+            script.master_bedroom_fan_high
+          {% endif %}
+
+fan_medium:
+  sequence:
+    - service: script.turn_on
+      data_template:
+        entity_id: >
+          {% if is_state("sensor.last_alexa", "media_player.guest_bedroom_echo_dot") %}
+            script.south_bedroom_fan_medium
+          {% elif is_state("sensor.last_alexa", "media_player.second_bedroom_echo_dot") %}
+            script.north_bedroom_fan_medium
+          {% else %}
+            script.master_bedroom_fan_medium
+          {% endif %}
+
+fan_low:
+  sequence:
+    - service: script.turn_on
+      data_template:
+        entity_id: >
+          {% if is_state("sensor.last_alexa", "media_player.guest_bedroom_echo_dot") %}
+            script.south_bedroom_fan_low
+          {% elif is_state("sensor.last_alexa", "media_player.second_bedroom_echo_dot") %}
+            script.north_bedroom_fan_low
+          {% else %}
+            script.master_bedroom_fan_low
+          {% endif %}
+
+fan_off:
+  sequence:
+    - service: script.turn_on
+      data_template:
+        entity_id: >
+          {% if is_state("sensor.last_alexa", "media_player.guest_bedroom_echo_dot") %}
+            script.south_bedroom_fan_off
+          {% elif is_state("sensor.last_alexa", "media_player.second_bedroom_echo_dot") %}
+            script.north_bedroom_fan_off
+          {% else %}
+            script.master_bedroom_fan_off
+          {% endif %}

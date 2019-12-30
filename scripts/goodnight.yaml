@@ -1,0 +1,40 @@
+goodnight:
+  alias: 'Goodnight'
+  sequence:
+    - service: light.turn_off
+      entity_id: light.family_right_lamp
+    - service: light.turn_off
+      entity_id: light.family_left_lamp
+    - service: light.turn_off
+      entity_id: light.family_floor_lamp
+    - service: light.turn_off
+      entity_id: light.wled_family_ceiling
+    - service: light.turn_off
+      entity_id: light.hallway_strip
+    - service: light.turn_off
+      entity_id: light.front_hallway
+    - service: light.turn_off
+      entity_id: light.kitchen_table
+    - service: light.turn_off
+      entity_id: light.kitchen_sink
+    - service: light.turn_off
+      entity_id: light.desk_lamp
+    - service: light.turn_off
+      entity_id: light.desk_lightstrip
+    - service: light.turn_off
+      entity_id: light.hogwarts
+    - service: light.turn_off
+      data_template:
+        entity_id: light.bed_lamp
+        transition: 1800
+    - service: light.turn_off
+      data_template:
+        entity_id: light.alexs_lamp
+        transition: 1800
+    - service: light.turn_off
+      data_template:
+        entity_id: light.danas_lamp
+        transition: 1800
+    - service: alarm_control_panel.alarm_arm_home
+    - service: homeassistant.turn_off
+      entity_id: group.decorations

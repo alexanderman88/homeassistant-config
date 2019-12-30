@@ -1,0 +1,25 @@
+christmas_on:
+  alias: 'Christmas On'
+  sequence:
+    - service: homeassistant.turn_on
+      entity_id: group.christmas_tree
+    - service: light.turn_on
+      data:
+        entity_id: light.wled_family_ceiling
+        brightness: 220
+        effect: '[FX=44] Merry Christmas'
+    - service: light.turn_on
+      data:
+        entity_id: light.family_floor_lamp
+        rgb_color: [0, 255, 0]
+        brightness: 200
+    - service: light.turn_on
+      data:
+        entity_id: light.family_right_lamp
+        rgb_color: [255, 0, 0]
+        brightness: 200
+    - service: light.turn_on
+      data:
+        entity_id: light.family_left_lamp
+        rgb_color: [0, 255, 0]
+        brightness: 200

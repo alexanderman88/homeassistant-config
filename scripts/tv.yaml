@@ -1,0 +1,97 @@
+tv_on:
+  sequence:
+    - service: switch.turn_on
+      data_template:
+        entity_id: >
+          {% if is_state("sensor.last_alexa", "media_player.alex_s_2nd_echo") or
+                is_state("sensor.last_alexa", "media_player.bathroom_echo_dot") or
+                is_state("sensor.last_alexa", "media_player.alex_s_echo_show") %}
+            switch.master_bedroom_tv
+          {% elif is_state("sensor.last_alexa", "media_player.alex_s_echo") or
+                  is_state("sensor.last_alexa", "media_player.bedroom_echo_dot_2") %}
+            switch.family_room_tv
+          {% endif %}
+
+tv_off:
+  sequence:
+    - service: switch.turn_off
+      data_template:
+        entity_id: >
+          {% if is_state("sensor.last_alexa", "media_player.alex_s_2nd_echo") or
+                is_state("sensor.last_alexa", "media_player.bathroom_echo_dot") or
+                is_state("sensor.last_alexa", "media_player.alex_s_echo_show") %}
+            switch.master_bedroom_tv
+          {% elif is_state("sensor.last_alexa", "media_player.alex_s_echo") or
+                  is_state("sensor.last_alexa", "media_player.bedroom_echo_dot_2") %}
+            switch.family_room_tv
+          {% endif %}
+
+tv_play:
+  sequence:
+    - service: script.turn_on
+      data_template:
+        entity_id: >
+          {% if is_state("sensor.last_alexa", "media_player.alex_s_2nd_echo") or
+                is_state("sensor.last_alexa", "media_player.bathroom_echo_dot") or
+                is_state("sensor.last_alexa", "media_player.alex_s_echo_show") %}
+            script.master_bedroom_tv_play
+          {% elif is_state("sensor.last_alexa", "media_player.alex_s_echo") or
+                  is_state("sensor.last_alexa", "media_player.bedroom_echo_dot_2") %}
+            script.family_room_tv_play
+          {% endif %}
+
+tv_pause:
+  sequence:
+    - service: script.turn_on
+      data_template:
+        entity_id: >
+          {% if is_state("sensor.last_alexa", "media_player.alex_s_2nd_echo") or
+                is_state("sensor.last_alexa", "media_player.bathroom_echo_dot") or
+                is_state("sensor.last_alexa", "media_player.alex_s_echo_show") %}
+            script.master_bedroom_tv_pause
+          {% elif is_state("sensor.last_alexa", "media_player.alex_s_echo") or
+                  is_state("sensor.last_alexa", "media_player.bedroom_echo_dot_2") %}
+            script.family_room_tv_pause
+          {% endif %}
+
+tv_mute:
+  sequence:
+    - service: script.turn_on
+      data_template:
+        entity_id: >
+          {% if is_state("sensor.last_alexa", "media_player.alex_s_2nd_echo") or
+                is_state("sensor.last_alexa", "media_player.bathroom_echo_dot") or
+                is_state("sensor.last_alexa", "media_player.alex_s_echo_show") %}
+            script.master_bedroom_tv_mute
+          {% elif is_state("sensor.last_alexa", "media_player.alex_s_echo") or
+                  is_state("sensor.last_alexa", "media_player.bedroom_echo_dot_2") %}
+            script.family_room_tv_mute
+          {% endif %}
+
+tv_volume_up:
+  sequence:
+    - service: script.turn_on
+      data_template:
+        entity_id: >
+          {% if is_state("sensor.last_alexa", "media_player.alex_s_2nd_echo") or
+                is_state("sensor.last_alexa", "media_player.bathroom_echo_dot") or
+                is_state("sensor.last_alexa", "media_player.alex_s_echo_show") %}
+            script.master_bedroom_tv_volume_up
+          {% elif is_state("sensor.last_alexa", "media_player.alex_s_echo") or
+                  is_state("sensor.last_alexa", "media_player.bedroom_echo_dot_2") %}
+            script.family_room_tv_volume_up
+          {% endif %}
+
+tv_volume_down:
+  sequence:
+    - service: script.turn_on
+      data_template:
+        entity_id: >
+          {% if is_state("sensor.last_alexa", "media_player.alex_s_2nd_echo") or
+                is_state("sensor.last_alexa", "media_player.bathroom_echo_dot") or
+                is_state("sensor.last_alexa", "media_player.alex_s_echo_show") %}
+            script.master_bedroom_tv_volume_down
+          {% elif is_state("sensor.last_alexa", "media_player.alex_s_echo") or
+                  is_state("sensor.last_alexa", "media_player.bedroom_echo_dot_2") %}
+            script.family_room_tv_volume_down
+          {% endif %}

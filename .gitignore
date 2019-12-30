@@ -11,8 +11,18 @@
 .storage
 .cloud
 .google.token
+!automation
+!group
+!light
+!scene
+!scripts
+!themes
 
 # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
 ip_bans.yaml
 secrets.yaml
 known_devices.yaml
+automations.yaml
+groups.yaml
+intents.yaml
+scripts.yaml

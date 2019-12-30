@@ -1,0 +1,86 @@
+
+#### Normal Daily Theme Change Between Light and Dark Themes and On Start Up####
+
+- alias: Automatic Theme Change
+  trigger:
+    - platform: homeassistant
+      event: start
+    - platform: state
+      entity_id: sun.sun
+      to: above_horizon
+    - platform: state
+      entity_id: sun.sun
+      to: below_horizon
+  action:
+    - service_template: frontend.set_theme
+      data_template:
+        name: >
+          {% if states.sun.sun.state == "above_horizon" %}
+            clear
+          {% else %}
+            clear_dark
+          {% endif %}
+
+#### Halloween Theme Automations ####
+
+- alias: Halloween Theme On
+  trigger:
+    - platform: time
+      at: "00:30:00"
+    - platform: homeassistant
+      event: start
+  condition:
+    condition: template
+    value_template: '{{ now().strftime("%m-%d") >= "10-06" and now().strftime("%m-%d") <= "11-01"}}'
+  action:
+    - service: frontend.set_theme
+      data:
+        name: halloween
+    - service: homeassistant.turn_off
+      entity_id: automation.automatic_theme_change
+
+- alias: Halloween Theme Off
+  trigger:
+    platform: time
+    at: "00:30:00"
+  condition:
+    condition: template
+    value_template: '{{ now().strftime("%m-%d") == "11-01" }}'
+  action:
+    - service: frontend.set_theme
+      data:
+        name: default
+    - service: homeassistant.turn_on
+      entity_id: automation.automatic_theme_change
+
+#### Christmas Theme Automations ####
+
+- alias: Christmas Theme On
+  trigger:
+    - platform: time
+      at: "00:30:00"
+    - platform: homeassistant
+      event: start
+  condition:
+    condition: template
+    value_template: '{{ now().strftime("%m-%d") >= "12-01" and now().strftime("%m-%d") <= "12-31"}}'
+  action:
+    - service: frontend.set_theme
+      data:
+        name: christmas
+    - service: homeassistant.turn_off
+      entity_id: automation.automatic_theme_change
+
+- alias: Christmas Theme Off
+  trigger:
+    platform: time
+    at: "00:30:00"
+  condition:
+    condition: template
+    value_template: '{{ now().strftime("%m-%d") == "01-01" }}'
+  action:
+    - service: frontend.set_theme
+      data:
+        name: default
+    - service: homeassistant.turn_on
+      entity_id: automation.automatic_theme_change

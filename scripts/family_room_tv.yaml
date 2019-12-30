@@ -1,0 +1,536 @@
+family_room_tv_volume_up:
+  sequence:
+    service: remote.send_command
+    data:
+      entity_id: remote.family_room
+      command:
+       - VolumeUp
+      device: 64149668
+
+family_room_tv_volume_down:
+  sequence:
+    service: remote.send_command
+    data:
+      entity_id: remote.family_room
+      command:
+       - VolumeDown
+      device: 64149668
+
+family_room_tv_mute:
+  sequence:
+    service: remote.send_command
+    data:
+      entity_id: remote.family_room
+      command:
+       - Mute
+      device: 64149668
+
+family_room_tv_roku:
+  sequence:
+    service: remote.send_command
+    data:
+      entity_id: remote.family_room
+      activity: 'Watch TV'
+
+family_room_xfinity:
+  sequence:
+    service: remote.turn_on
+    data:
+      entity_id: remote.family_room
+      activity: 'Watch Xfinity'
+
+family_room_tv_up:
+  sequence:
+    - service: script.turn_on
+      entity_id: script.family_room_tv_roku_up
+    - service: script.turn_on
+      entity_id: script.family_room_tv_xfinity_up
+
+family_room_tv_down:
+  sequence:
+    - service: script.turn_on
+      entity_id: script.family_room_tv_roku_down
+    - service: script.turn_on
+      entity_id: script.family_room_tv_xfinity_down
+
+family_room_tv_left:
+  sequence:
+    - service: script.turn_on
+      entity_id: script.family_room_tv_roku_left
+    - service: script.turn_on
+      entity_id: script.family_room_tv_xfinity_left
+
+family_room_tv_right:
+  sequence:
+    - service: script.turn_on
+      entity_id: script.family_room_tv_roku_right
+    - service: script.turn_on
+      entity_id: script.family_room_tv_xfinity_right
+
+family_room_tv_select:
+  sequence:
+   - service: script.turn_on
+     entity_id: script.family_room_tv_roku_select
+   - service: script.turn_on
+     entity_id: script.family_room_tv_xfinity_select
+
+family_room_tv_menu:
+  sequence:
+   - service: script.turn_on
+     entity_id: script.family_room_tv_roku_menu
+   - service: script.turn_on
+     entity_id: script.family_room_tv_xfinity_menu
+
+family_room_tv_guide:
+  sequence:
+   - service: script.turn_on
+     entity_id: script.family_room_tv_roku_guide
+   - service: script.turn_on
+     entity_id: script.family_room_tv_xfinity_guide
+
+family_room_tv_back:
+  sequence:
+   - service: script.turn_on
+     entity_id: script.family_room_tv_roku_back
+   - service: script.turn_on
+     entity_id: script.family_room_tv_xfinity_back
+
+family_room_tv_exit:
+  sequence:
+   - service: script.turn_on
+     entity_id: script.family_room_tv_roku_exit
+   - service: script.turn_on
+     entity_id: script.family_room_tv_xfinity_exit
+
+family_room_tv_play:
+  sequence:
+   - service: script.turn_on
+     entity_id: script.family_room_tv_roku_play
+   - service: script.turn_on
+     entity_id: script.family_room_tv_xfinity_play
+
+family_room_tv_pause:
+  sequence:
+   - service: script.turn_on
+     entity_id: script.family_room_tv_roku_pause
+   - service: script.turn_on
+     entity_id: script.family_room_tv_xfinity_pause
+
+family_room_tv_roku_play:
+  sequence:
+    - condition: template
+      value_template: "{{ is_state_attr('remote.family_room', 'current_activity', 'Watch TV') }}"
+    - service: remote.send_command
+      data:
+        entity_id: remote.family_room
+        command:
+         - Play
+        device: 64620375
+
+family_room_tv_roku_pause:
+  sequence:
+    - condition: template
+      value_template: "{{ is_state_attr('remote.family_room', 'current_activity', 'Watch TV') }}"
+    - service: remote.send_command
+      data:
+        entity_id: remote.family_room
+        command:
+         - Pause
+        device: 64620375
+
+family_room_tv_roku_left:
+  sequence:
+    - condition: template
+      value_template: "{{ is_state_attr('remote.family_room', 'current_activity', 'Watch TV') }}"
+    - service: remote.send_command
+      data:
+        entity_id: remote.family_room
+        command:
+         - DirectionLeft
+        device: 64620375
+
+family_room_tv_roku_right:
+  sequence:
+    - condition: template
+      value_template: "{{ is_state_attr('remote.family_room', 'current_activity', 'Watch TV') }}"
+    - service: remote.send_command
+      data:
+        entity_id: remote.family_room
+        command:
+         - DirectionRight
+        device: 64620375
+
+family_room_tv_roku_up:
+  sequence:
+    - condition: template
+      value_template: "{{ is_state_attr('remote.family_room', 'current_activity', 'Watch TV') }}"
+    - service: remote.send_command
+      data:
+        entity_id: remote.family_room
+        command:
+         - DirectionUp
+        device: 64620375
+
+family_room_tv_roku_down:
+  sequence:
+   - condition: template
+     value_template: "{{ is_state_attr('remote.family_room', 'current_activity', 'Watch TV') }}"
+   - service: remote.send_command
+     data:
+       entity_id: remote.family_room
+       command:
+        - DirectionDown
+       device: 64620375
+
+family_room_tv_roku_select:
+  sequence:
+   - condition: template
+     value_template: "{{ is_state_attr('remote.family_room', 'current_activity', 'Watch TV') }}"
+   - service: remote.send_command
+     data:
+       entity_id: remote.family_room
+       command:
+        - Select
+       device: 64620375
+
+family_room_tv_roku_menu:
+  sequence:
+   - condition: template
+     value_template: "{{ is_state_attr('remote.family_room', 'current_activity', 'Watch TV') }}"
+   - service: remote.send_command
+     data:
+       entity_id: remote.family_room
+       command:
+        - Info
+       device: 64620375
+
+family_room_tv_roku_guide:
+  sequence:
+   - condition: template
+     value_template: "{{ is_state_attr('remote.family_room', 'current_activity', 'Watch TV') }}"
+   - service: remote.send_command
+     data:
+       entity_id: remote.family_room
+       command:
+        - Home
+       device: 64620375
+
+
+family_room_tv_roku_back:
+  sequence:
+   - condition: template
+     value_template: "{{ is_state_attr('remote.family_room', 'current_activity', 'Watch TV') }}"
+   - service: remote.send_command
+     data:
+       entity_id: remote.family_room
+       command:
+        - Back
+       device: 64620375
+
+family_room_tv_roku_exit:
+  sequence:
+   - condition: template
+     value_template: "{{ is_state_attr('remote.family_room', 'current_activity', 'Watch TV') }}"
+   - service: remote.send_command
+     data:
+       entity_id: remote.family_room
+       command:
+        - Exit
+       device: 64620375
+
+family_room_tv_xfinity_left:
+  sequence:
+   - condition: template
+     value_template: "{{ is_state_attr('remote.family_room', 'current_activity', 'Watch Xfinity') }}"
+   - service: remote.send_command
+     data:
+       entity_id: remote.family_room
+       command:
+        - DirectionLeft
+       device: 55966831
+
+family_room_tv_xfinity_right:
+  sequence:
+   - condition: template
+     value_template: "{{ is_state_attr('remote.family_room', 'current_activity', 'Watch Xfinity') }}"
+   - service: remote.send_command
+     data:
+       entity_id: remote.family_room
+       command:
+        - DirectionRight
+       device: 55966831
+
+family_room_tv_xfinity_up:
+  sequence:
+   - condition: template
+     value_template: "{{ is_state_attr('remote.family_room', 'current_activity', 'Watch Xfinity') }}"
+   - service: remote.send_command
+     data:
+       entity_id: remote.family_room
+       command:
+        - DirectionUp
+       device: 55966831
+
+family_room_tv_xfinity_down:
+  sequence:
+   - condition: template
+     value_template: "{{ is_state_attr('remote.family_room', 'current_activity', 'Watch Xfinity') }}"
+   - service: remote.send_command
+     data:
+       entity_id: remote.family_room
+       command:
+        - DirectionDown
+       device: 55966831
+
+family_room_tv_xfinity_select:
+  sequence:
+   - condition: template
+     value_template: "{{ is_state_attr('remote.family_room', 'current_activity', 'Watch Xfinity') }}"
+   - service: remote.send_command
+     data:
+       entity_id: remote.family_room
+       command:
+        - OK
+       device: 55966831
+
+family_room_tv_xfinity_menu:
+  sequence:
+   - condition: template
+     value_template: "{{ is_state_attr('remote.family_room', 'current_activity', 'Watch Xfinity') }}"
+   - service: remote.send_command
+     data:
+       entity_id: remote.family_room
+       command:
+        - Menu
+       device: 55966831
+
+family_room_tv_xfinity_guide:
+  sequence:
+   - condition: template
+     value_template: "{{ is_state_attr('remote.family_room', 'current_activity', 'Watch Xfinity') }}"
+   - service: remote.send_command
+     data:
+       entity_id: remote.family_room
+       command:
+        - Guide
+       device: 55966831
+
+family_room_tv_xfinity_back:
+  sequence:
+   - condition: template
+     value_template: "{{ is_state_attr('remote.family_room', 'current_activity', 'Watch Xfinity') }}"
+   - service: remote.send_command
+     data:
+       entity_id: remote.family_room
+       command:
+        - Last
+       device: 55966831
+
+family_room_tv_xfinity_exit:
+  sequence:
+   - condition: template
+     value_template: "{{ is_state_attr('remote.family_room', 'current_activity', 'Watch Xfinity') }}"
+   - service: remote.send_command
+     data:
+       entity_id: remote.family_room
+       command:
+        - Exit
+       device: 55966831
+
+xfinity_0:
+  sequence:
+   - condition: template
+     value_template: "{{ is_state_attr('remote.family_room', 'current_activity', 'Watch Xfinity') }}"
+   - service: remote.send_command
+     data:
+       entity_id: remote.family_room
+       command:
+        - 0
+       device: 55966831
+
+xfinity_1:
+  sequence:
+   - condition: template
+     value_template: "{{ is_state_attr('remote.family_room', 'current_activity', 'Watch Xfinity') }}"
+   - service: remote.send_command
+     data:
+       entity_id: remote.family_room
+       command:
+        - 1
+       device: 55966831
+
+xfinity_2:
+  sequence:
+   - condition: template
+     value_template: "{{ is_state_attr('remote.family_room', 'current_activity', 'Watch Xfinity') }}"
+   - service: remote.send_command
+     data:
+       entity_id: remote.family_room
+       command:
+        - 2
+       device: 55966831
+
+xfinity_3:
+  sequence:
+   - condition: template
+     value_template: "{{ is_state_attr('remote.family_room', 'current_activity', 'Watch Xfinity') }}"
+   - service: remote.send_command
+     data:
+       entity_id: remote.family_room
+       command:
+        - 3
+       device: 55966831
+
+xfinity_4:
+  sequence:
+   - condition: template
+     value_template: "{{ is_state_attr('remote.family_room', 'current_activity', 'Watch Xfinity') }}"
+   - service: remote.send_command
+     data:
+       entity_id: remote.family_room
+       command:
+        - 4
+       device: 55966831
+
+xfinity_5:
+  sequence:
+   - condition: template
+     value_template: "{{ is_state_attr('remote.family_room', 'current_activity', 'Watch Xfinity') }}"
+   - service: remote.send_command
+     data:
+       entity_id: remote.family_room
+       command:
+        - 5
+       device: 55966831
+
+xfinity_6:
+  sequence:
+   - condition: template
+     value_template: "{{ is_state_attr('remote.family_room', 'current_activity', 'Watch Xfinity') }}"
+   - service: remote.send_command
+     data:
+       entity_id: remote.family_room
+       command:
+        - 6
+       device: 55966831
+
+xfinity_7:
+  sequence:
+   - condition: template
+     value_template: "{{ is_state_attr('remote.family_room', 'current_activity', 'Watch Xfinity') }}"
+   - service: remote.send_command
+     data:
+       entity_id: remote.family_room
+       command:
+        - 7
+       device: 55966831
+
+xfinity_8:
+  sequence:
+   - condition: template
+     value_template: "{{ is_state_attr('remote.family_room', 'current_activity', 'Watch Xfinity') }}"
+   - service: remote.send_command
+     data:
+       entity_id: remote.family_room
+       command:
+        - 8
+       device: 55966831
+
+xfinity_9:
+  sequence:
+   - condition: template
+     value_template: "{{ is_state_attr('remote.family_room', 'current_activity', 'Watch Xfinity') }}"
+   - service: remote.send_command
+     data:
+       entity_id: remote.family_room
+       command:
+        - 9
+       device: 55966831
+
+xfinity_channel_up:
+  sequence:
+   - condition: template
+     value_template: "{{ is_state_attr('remote.family_room', 'current_activity', 'Watch Xfinity') }}"
+   - service: remote.send_command
+     data:
+       entity_id: remote.family_room
+       command:
+        - ChannelUp
+       device: 55966831
+
+xfinity_channel_down:
+  sequence:
+   - condition: template
+     value_template: "{{ is_state_attr('remote.family_room', 'current_activity', 'Watch Xfinity') }}"
+   - service: remote.send_command
+     data:
+       entity_id: remote.family_room
+       command:
+        - ChannelDown
+       device: 55966831
+
+xfinity_page_up:
+  sequence:
+   - condition: template
+     value_template: "{{ is_state_attr('remote.family_room', 'current_activity', 'Watch Xfinity') }}"
+   - service: remote.send_command
+     data:
+       entity_id: remote.family_room
+       command:
+        - PageUp
+       device: 55966831
+
+xfinity_page_down:
+  sequence:
+   - condition: template
+     value_template: "{{ is_state_attr('remote.family_room', 'current_activity', 'Watch Xfinity') }}"
+   - service: remote.send_command
+     data:
+       entity_id: remote.family_room
+       command:
+        - PageDown
+       device: 55966831
+
+xfinity_record:
+  sequence:
+   - condition: template
+     value_template: "{{ is_state_attr('remote.family_room', 'current_activity', 'Watch Xfinity') }}"
+   - service: remote.send_command
+     data:
+       entity_id: remote.family_room
+       command:
+        - Record
+       device: 55966831
+
+xfinity_info:
+  sequence:
+   - condition: template
+     value_template: "{{ is_state_attr('remote.family_room', 'current_activity', 'Watch Xfinity') }}"
+   - service: remote.send_command
+     data:
+       entity_id: remote.family_room
+       command:
+        - Info
+       device: 55966831
+
+family_room_tv_xfinity_play:
+  sequence:
+    - condition: template
+      value_template: "{{ is_state_attr('remote.family_room', 'current_activity', 'Watch Xfinity') }}"
+    - service: remote.send_command
+      data:
+        entity_id: remote.family_room
+        command:
+         - Play
+        device: 55966831
+
+family_room_tv_xfinity_pause:
+  sequence:
+    - condition: template
+      value_template: "{{ is_state_attr('remote.family_room', 'current_activity', 'Watch Xfinity') }}"
+    - service: remote.send_command
+      data:
+        entity_id: remote.family_room
+        command:
+         - Pause
+        device: 55966831

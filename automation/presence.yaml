@@ -1,0 +1,54 @@
+#### Turns Alarm On and Lights Off When Empty ####
+
+- alias: 'Alex and Dana Away'
+  trigger:
+    - platform: template
+      value_template: "{% if (is_state('device_tracker.alexs_phone','not_home')) and (is_state('device_tracker.danas_phone','not_home')) %}true{% endif %}"
+  action:
+    - service: alarm_control_panel.alarm_arm_away
+      entity_id: alarm_control_panel.ring_alarm
+    - service: light.turn_off
+      entity_id: light.family_right_lamp
+    - service: light.turn_off
+      entity_id: light.family_left_lamp
+    - service: light.turn_off
+      entity_id: light.family_floor_lamp
+    - service: light.turn_off
+      entity_id: light.wled_family_ceiling
+    - service: light.turn_off
+      entity_id: light.hallway_strip
+    - service: light.turn_off
+      entity_id: light.front_hallway
+    - service: light.turn_off
+      entity_id: light.kitchen_table
+    - service: light.turn_off
+      entity_id: light.kitchen_sink
+    - service: light.turn_off
+      entity_id: light.desk_lamp
+    - service: light.turn_off
+      entity_id: light.desk_lightstrip
+    - service: light.turn_off
+      entity_id: light.alexs_lamp
+    - service: light.turn_off
+      entity_id: light.danas_lamp
+    - service: notify.mobile_app_alex_s_phone
+      data:
+        message: 'Presence Detection Turned On the Alarm'
+
+#### Turns Alarm Off Upon Arrival ####
+  ## Still Testing Accuracy of GPS Location and Timing ##
+
+- alias: 'Alex or Dana Home'
+  trigger:
+    - platform: state
+      entity_id: device_tracker.alexs_phone
+      to: 'home'
+    - platform: state
+      entity_id: device_tracker.danas_phone
+      to: 'home'
+  action:
+    #- service: alarm_control_panel.alarm_disarm
+    #  entity_id: alarm_control_panel.ring_alarm
+    - service: notify.mobile_app_alex_s_phone
+      data:
+        message: 'Presence Detection Would Have Turned Off the Alarm'

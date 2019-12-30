@@ -1,0 +1,125 @@
+master_bedroom_tv_exit:
+  sequence:
+    service: remote.send_command
+    data:
+      entity_id: remote.bedroom
+      command:
+       - Exit
+      device: 53231735
+
+master_bedroom_tv_menu:
+  sequence:
+    service: remote.send_command
+    data:
+      entity_id: remote.bedroom
+      command:
+       - Menu
+      device: 53231735
+
+master_bedroom_tv_left:
+  sequence:
+    service: remote.send_command
+    data:
+      entity_id: remote.bedroom
+      command:
+       - DirectionLeft
+      device: 53231735
+
+master_bedroom_tv_right:
+  sequence:
+    service: remote.send_command
+    data:
+      entity_id: remote.bedroom
+      command:
+       - DirectionRight
+      device: 53231735
+
+master_bedroom_tv_up:
+  sequence:
+    service: remote.send_command
+    data:
+      entity_id: remote.bedroom
+      command:
+       - DirectionUp
+      device: 53231735
+
+master_bedroom_tv_down:
+  sequence:
+    service: remote.send_command
+    data:
+      entity_id: remote.bedroom
+      command:
+       - DirectionDown
+      device: 53231735
+
+master_bedroom_tv_select:
+  sequence:
+    service: remote.send_command
+    data:
+      entity_id: remote.bedroom
+      command:
+       - OK
+      device: 53231735
+
+master_bedroom_tv_back:
+  sequence:
+    service: remote.send_command
+    data:
+      entity_id: remote.bedroom
+      command:
+       - Back
+      device: 53231735
+
+master_bedroom_tv_home:
+  sequence:
+    service: remote.send_command
+    data:
+      entity_id: remote.bedroom
+      command:
+       - Home
+      device: 53231735
+
+master_bedroom_tv_volume_up:
+  sequence:
+    service: remote.send_command
+    data:
+      entity_id: remote.bedroom
+      command:
+       - VolumeUp
+      device: 53231227
+
+master_bedroom_tv_volume_down:
+  sequence:
+    service: remote.send_command
+    data:
+      entity_id: remote.bedroom
+      command:
+       - VolumeDown
+      device: 53231227
+
+master_bedroom_tv_mute:
+  sequence:
+    service: remote.send_command
+    data:
+      entity_id: remote.bedroom
+      command:
+       - Mute
+      device: 53231227
+
+master_bedroom_tv_pause:
+  sequence:
+    service: remote.send_command
+    data:
+      entity_id: remote.bedroom
+      command:
+       - Pause
+      device: 53231735
+
+master_bedroom_tv_play:
+  sequence:
+    service: remote.send_command
+    data:
+      entity_id: remote.bedroom
+      command:
+       - Play
+      device: 53231735

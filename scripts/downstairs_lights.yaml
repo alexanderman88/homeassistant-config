@@ -1,0 +1,19 @@
+downstairs_lights_off:
+  alias: 'Downstairs Lights Off'
+  sequence:
+    - service: light.turn_off
+      entity_id: light.family_right_lamp
+    - service: light.turn_off
+      entity_id: light.family_left_lamp
+    - service: light.turn_off
+      entity_id: light.family_floor_lamp
+    - service: light.turn_off
+      entity_id: light.wled_family_ceiling
+    - service: light.turn_off
+      entity_id: light.hallway_strip
+    - service: light.turn_off
+      entity_id: light.front_hallway
+    - service: light.turn_off
+      entity_id: light.kitchen_table
+    - service: light.turn_off
+      entity_id: light.kitchen_sink

@@ -1,0 +1,21 @@
+#### Turns Switches that Controls Lights into Light Entity for Alexa Integration ####
+
+- platform: switch
+  name: Kitchen Sink
+  entity_id: switch.ge_14291_inwall_smart_switch_switch_2
+
+- platform: switch
+  name: Front Hallway
+  entity_id: switch.ge_14291_inwall_smart_switch_switch_4
+
+- platform: switch
+  name: Front Door
+  entity_id: switch.ge_14291_inwall_smart_switch_switch_3
+
+- platform: switch
+  name: Back Door
+  entity_id: switch.ge_14291_inwall_smart_switch_switch
+
+- platform: switch
+  name: Hogwarts
+  entity_id: switch.village_light

@@ -1,0 +1,25 @@
+
+#### Sends Alert if Garage is Open for 30 Minutes ####
+
+- alias: 'Garage Door Open Notification'
+  trigger:
+    - platform: state
+      entity_id: cover.garage_door
+      to: 'open'
+      for:
+        minutes: 30
+  action:
+    - service: notify.alexa_media
+      data:
+        target: 
+          - media_player.everywhere_3
+        data:
+          type: announce
+          method: all
+        message: 'The Garage Door is Still Open'
+    - service: notify.mobile_app_alex_s_phone
+      data:
+        message: 'The Garage Door is Still Open'
+    - service: notify.mobile_app_dana_s_phone
+      data:
+        message: 'The Garage Door is Still Open'

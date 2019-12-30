@@ -1,0 +1,37 @@
+
+#### Turns on Wax Melts During Weekdays ####
+
+- alias: 'Wax Melts On'
+  trigger:
+    - platform: time
+      at: "17:00:00"
+  condition:
+    condition: time
+    weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+  action:
+    - service: homeassistant.turn_on
+      entity_id: group.wax_melt
+
+
+#### Turns off Wax Melts After 1 1/2 Hours ####
+
+- alias: 'Wax Melts Off'
+  trigger:
+    - platform: time
+      at: "18:30:00"
+  condition:
+    condition: time
+    weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+  action:
+    - service: homeassistant.turn_off
+      entity_id: group.wax_melt

@@ -1,0 +1,83 @@
+evening:
+  alias: 'Evening'
+  sequence:
+  
+    # Family Room Lights
+    - service: light.turn_on
+      data:
+        entity_id: light.wled_family_ceiling
+        rgb_color: [255, 197, 143]
+        effect: '[FX=00] Solid'
+    - service: light.turn_on
+      data:
+        entity_id: light.family_right_lamp
+        brightness: 200
+        color_temp: 335
+    - service: light.turn_on
+      data:
+        entity_id: light.family_left_lamp
+        brightness: 200
+        color_temp: 335
+    - service: light.turn_on
+      data:
+        entity_id: light.family_floor_lamp
+        brightness: 200
+        color_temp: 335
+    - service: light.turn_on
+      data:
+        entity_id: light.hallway_strip
+        effect: solid
+        brightness: 200
+        rgb_color: [255, 90, 36]
+    # Wled lights had trouble correctly adjusting brightness, so fixed issue by setting brightness once initially settings were adjusted.
+    - service: light.turn_on
+      data:
+        entity_id: light.wled_family_ceiling
+        brightness: 50
+
+    # Bedroom Lights
+    - service: light.turn_on
+      data:
+        entity_id: light.desk_lightstrip
+        effect: colorloop
+        brightness: 200
+    - service: light.turn_on
+      data:
+        entity_id: light.desk_lamp
+        effect: colorloop
+        brightness: 200
+        color_temp: 335
+    - service: light.turn_on
+      data:
+        entity_id: light.bed_lamp
+        brightness: 200
+        color_temp: 335
+    - service: light.turn_on
+      entity_id: light.hogwarts
+    - service: light.turn_on
+      data:
+        entity_id: light.alexs_lamp
+        brightness: 150
+    - service: light.turn_on
+      data:
+        entity_id: light.danas_lamp
+        brightness: 150
+    
+    # Kitchen Lights
+    - service: light.turn_on
+      data:
+        entity_id: light.kitchen_sink
+    
+    # Outside Lights
+    - service: light.turn_on
+      data:
+        entity_id: light.front_door
+    - service: light.turn_on
+      data:
+        entity_id: light.back_door
+    - service: switch.turn_on
+      entity_id: switch.ge_14284_outdoor_smart_switch_switch
+    
+    # Decorations
+    - service: homeassistant.turn_on
+      entity_id: group.decorations

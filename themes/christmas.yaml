@@ -1,0 +1,54 @@
+christmas:
+
+    # Background image
+    background-image: 'center / cover no-repeat url("/local/christmasphoto.jpg") fixed'
+
+
+    primary-color: "#114a11"
+    disabled-text-color: "#000000"
+    divider-color: "#114a11"
+    paper-card-background-color: "#871010"
+    paper-grey-200: "#114a11"
+    paper-item-icon-color: "#114a11"
+    paper-listbox-background-color: "#114a11"
+    paper-listbox-color: "#FFFFFF"
+    primary-background-color: "#871010" # For dialogs and popups...etc
+    primary-text-color: "#FFFFFF"      
+    secondary-background-color: "#ba4c4c"
+    secondary-text-color: "#000000"
+    border-color: '#000000' 
+    text-primary-color: "#FFFFFF"
+    text-dark-color: '#000000'
+    dark-primary-color: "#000000"
+    light-primary-color: "#ba4c4c"
+    paper-toggle-button-checked-button-color: "#FFFFFF"
+    paper-toggle-button-checked-bar-color: "#114a11"
+    ha-card-border-radius: '10px'
+    off-color: "#ffffff"
+    accent-color: "#871010"
+
+
+    paper-toggle-button-checked-ink-color: "#114a11"
+    paper-slider-knob-color: "#114a11"
+    paper-slider-knob-start-color: "#114a11"
+    paper-slider-pin-color: "#114a11"
+    paper-slider-active-color: "#114a11"
+    paper-slider-secondary-color: "#871010"
+
+    label-badge-background-color: "var(--paper-listbox-background-color)"
+    label-badge-text-color: "var(--text-primary-color)"
+    paper-card-header-color: "#var(--paper-item-icon-color)"
+    paper-grey-50: "var(--primary-text-color)"
+    paper-item-icon-active-color: "#ff0000"
+    paper-item-icon_-_color: "var(--primary-text-color)"
+    paper-toggle-button-unchecked-bar-color: "var(--primary-text-color)"
+    
+    # Shadows
+    shadow-elevation-2dp_-_box-shadow: 'inset 0px 0px 0px 1px var(--border-color)'
+    shadow-elevation-4dp_-_box-shadow: 'var(--shadow-elevation-2dp_-_box-shadow)'
+    shadow-elevation-6dp_-_box-shadow: 'var(--shadow-elevation-2dp_-_box-shadow)'
+    shadow-elevation-8dp_-_box-shadow: 'var(--shadow-elevation-2dp_-_box-shadow)'
+    shadow-elevation-10dp_-_box-shadow: 'var(--shadow-elevation-2dp_-_box-shadow)'
+    shadow-elevation-12dp_-_box-shadow: 'var(--shadow-elevation-2dp_-_box-shadow)'
+    shadow-elevation-14dp_-_box-shadow: 'var(--shadow-elevation-2dp_-_box-shadow)'
+    shadow-elevation-16dp_-_box-shadow: '0px 0px 0px 3px var(--text-dark-color)'

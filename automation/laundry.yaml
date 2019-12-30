@@ -1,0 +1,36 @@
+
+#### Laundry Announcements Over All Echos ####
+
+- alias: 'Dryer Done'
+  trigger:
+    platform: state
+    entity_id: sensor.dryer_status
+    to: 'Not Running'
+    from: 'Running'
+  action:
+    - service: notify.alexa_media
+      data:
+        target: 
+          - media_player.everywhere_3
+        data:
+          type: announce
+          method: all
+        message: "The Dryer is Done."
+
+- alias: 'Washer Done'
+  trigger:
+    platform: state
+    entity_id: sensor.washing_machine_status
+    to: 'Not Running'
+    from: 'Running'
+    for:
+      minutes: 7
+  action:
+    - service: notify.alexa_media
+      data:
+        target: 
+          - media_player.everywhere_3
+        data:
+          type: announce
+          method: all
+        message: "The Washer is Done."

@@ -1,0 +1,31 @@
+- platform: mqtt
+  schema: json
+  name: "Hallway Strip"
+  state_topic: "bruh/hallway"
+  command_topic: "bruh/hallway/set"
+  effect: true
+  effect_list:
+    - bpm
+    - candy cane  
+    - confetti  
+    - cyclon rainbow  
+    - dots  
+    - fire  
+    - glitter
+    - goal
+    - goal2
+    - juggle  
+    - lightning
+    - noise  
+    - police all  
+    - police one  
+    - rainbow  
+    - rainbow with glitter  
+    - ripple  
+    - sinelon  
+    - solid  
+    - twinkle  
+  brightness: true
+  rgb: true
+  optimistic: false
+  qos: 0

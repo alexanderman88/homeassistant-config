@@ -1,0 +1,74 @@
+
+#### Night Family Room Motion Lights ####
+
+- alias: Family Room Motion Sensor Lights On
+  trigger:
+    platform: state
+    entity_id: binary_sensor.family_room_motion_sensor
+    to: 'on'
+  condition:
+    - condition: time
+      after: '23:00'
+      before: '06:30'
+    - condition: state
+      entity_id: 'remote.family_room'
+      state: 'off'
+  action:
+    service: light.turn_on
+    data:
+      brightness: 20
+      entity_id: light.family_floor_lamp
+
+- alias: Family Room Motion Sensor Lights Off
+  trigger:
+    platform: state
+    entity_id: binary_sensor.family_room_motion_sensor
+    to: 'off'
+    for:
+      minutes: 5
+  condition:
+    - condition: time
+      after: '23:00'
+      before: '06:30'
+    - condition: state
+      entity_id: 'remote.family_room'
+      state: 'off'
+  action:
+    service: light.turn_off
+    entity_id: light.family_floor_lamp
+
+#### Night Kitchen Motion Lights ####
+
+- alias: Kitchen Motion Sensor Lights On
+  trigger:
+    platform: state
+    entity_id: binary_sensor.kitchen_motion_sensor
+    to: 'on'
+  condition:
+    - condition: time
+      after: '23:00'
+      before: '06:30'
+    - condition: state
+      entity_id: 'remote.family_room'
+      state: 'off'
+  action:
+    service: light.turn_on
+    entity_id: light.kitchen_sink
+
+- alias: Kitchen Motion Sensor Lights Off
+  trigger:
+    platform: state
+    entity_id: binary_sensor.kitchen_motion_sensor
+    to: 'off'
+    for:
+      minutes: 5
+  condition:
+    - condition: time
+      after: '23:00'
+      before: '06:30'
+    - condition: state
+      entity_id: 'remote.family_room'
+      state: 'off'
+  action:
+    service: light.turn_off
+    entity_id: light.kitchen_sink

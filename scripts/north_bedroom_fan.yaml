@@ -1,0 +1,39 @@
+north_bedroom_light_toggle:
+  sequence:
+  - service: broadlink.send
+    data:
+      host: 192.168.1.100
+      packet: 
+        - eBc0AA8dDx0PHA8OHR0PHA8dDxwPDh0OHQ4dHQ8OHQ4dDh0OHR0PHA8OHR0PDh0cDw4dHA8AAdMAAAAA
+
+north_bedroom_fan_off:
+  sequence:
+  - service: broadlink.send
+    data:
+      host: 192.168.1.100
+      packet: 
+        - eRc0AA4dDh0OHQ4PHB0OHQ4dDh0ODx0PHA8cHQ8PHQ8cDxwPHQ8cDxwPHR0ODx0dDw8cHQ8AAdQAAAAA
+
+north_bedroom_fan_high:
+    sequence:
+    - service: broadlink.send
+      data:
+        host: 192.168.1.100
+        packet:
+         - eBc0AA8dDxwPHQ8PHR0PHA8dDxwQDh0PHQ8dHQ8OHQ8dDx0OHR0PHQ8OHg4dDx0dDw4dHQ8AAdQAAAAA
+
+north_bedroom_fan_medium:
+    sequence:
+    - service: broadlink.send
+      data:
+        host: 192.168.1.100
+        packet:
+         - eBc0AA8dDx0PHQ8PHR0PHQ8dDx0PDx0PHQ8dHQ8OHQ8dDx0PHQ4dHQ8OHQ4dDh0dDw4dHQ8AAdMAAAAA
+
+north_bedroom_fan_low:
+    sequence:
+    - service: broadlink.send
+      data:
+        host: 192.168.1.100
+        packet:
+         - eBc0AA8dDx0PHQ8OHR0PHQ8dDx0PDh0OHQ8dHQ8OHQ4dDh0OHR0PDx0OHQ8dDh0dDw4dHQ8AAdMAAAAA

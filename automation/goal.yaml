@@ -1,0 +1,220 @@
+
+#### Turns off Celebrations after Goal Horn Media File is Done Playing ####
+
+- alias: 'Turn off goal'
+  trigger:
+    platform: state
+    entity_id: input_boolean.goaling
+    to: 'on'
+    for:
+      seconds: 69
+  action:
+  - service: media_player.turn_off
+    entity_id: media_player.family_room_speaker
+  - service: media_player.turn_off
+    entity_id: media_player.googlehome9756
+  - delay: 1
+  - service: script.turn_on
+    entity_id: script.goal_stop
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.goaling 
+
+#### Flashes Green Light at Start of Intermissions ####
+
+- alias: 'Intermission'
+  trigger:
+    platform: template
+    value_template: '{% if states.sensor.nhl_game_status.attributes["dates"][0]["games"][0]["linescore"]["intermissionInfo"]["inIntermission"] == true %}true{% endif %}'
+  action:
+  - service: scene.create
+    data:
+      scene_id: current_scene
+      snapshot_entities:
+      - light.wled_family_ceiling
+      - light.family_right_lamp
+      - light.family_left_lamp
+      - light.family_floor_lamp
+      - light.hallway_strip
+      - light.desk_lamp
+      - light.desk_lightstrip
+      - light.bed_lamp
+      - light.alexs_lamp
+      - light.danas_lamp
+      - light.kitchen_sink
+      - light.kitchen_ceiling
+      - light.kitchen_table
+      - light.front_hallway
+      - group.decorations
+  - service: light.turn_on
+    data:
+      entity_id: light.wled_family_ceiling
+      rgb_color: [0,255,0]
+      brightness: 255
+      effect: '[FX=15] Running'
+  - delay: 15
+  - service: scene.turn_on
+    entity_id: scene.current_scene
+
+#### Checks for Daily Update at Noonish (Eastern) for Current Day ####
+
+- alias: 'Check daily at noon-ish for update to NHL schedule'
+  trigger:
+  - platform: time
+    at: '11:05:00' 
+  action:
+  - service: script.turn_on
+    entity_id: script.nhl_update 
+  - service: homeassistant.update_entity
+    entity_id: sensor.nhl_next_game
+
+#### Updates Status Every 10 Minutes On Game Day ####
+  
+- alias: 'Change NHL update interval to 10 minutes when game is scheduled'
+  trigger:
+  - platform: time_pattern
+    minutes: '/10'
+  condition:
+  - condition: state
+    entity_id: sensor.nhl_game_status
+    state: "Scheduled"
+  action:
+  - service: script.turn_on
+    entity_id: script.nhl_update
+
+#### Updates Status Every Minute When in Pre-Game ####
+
+- alias: 'Change NHL update interval to 1 minute when game is Pre-Game'
+  trigger:
+  - platform: time_pattern
+    seconds: '/60'
+  condition:
+  - condition: state
+    entity_id: sensor.nhl_game_status
+    state: "Pre-Game"
+  action:
+  - service: script.turn_on
+    entity_id: script.nhl_update
+
+#### Updates Status Every Second When in Game is in Progress ####
+
+- alias: 'Change NHL update interval to 1 seconds when game is in progress'
+  trigger:
+  - platform: time_pattern
+    seconds: '/1'
+  condition:
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: sensor.nhl_game_status
+      state: "In Progress"
+    - condition: state
+      entity_id: sensor.nhl_game_status
+      state: "In Progress - Critical"
+    - condition: state
+      entity_id: sensor.nhl_game_status
+      state: "Unavailable"
+  action:
+  - service: script.turn_on
+    entity_id: script.nhl_update 
+
+#### Creates Chaos When Blackhawks Score a Goal ####
+
+- alias: Blackhawks Goal
+  trigger:
+  - platform: state
+    entity_id: sensor.nhl_home_score
+  - platform: state
+    entity_id: sensor.nhl_away_score
+  condition:
+  - condition: template
+    value_template: >
+      {{ trigger.to_state is not none and trigger.from_state is not none and
+         trigger.to_state.state|int > trigger.from_state.state|int 
+         and "Chicago Blackhawks" in trigger.from_state.attributes.friendly_name
+      }}
+  action:   
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.goaling  
+  - service: script.turn_on
+    entity_id: script.goal_start
+
+#### Does Minimum Amount Of Lighting Effects When Opponent Scores ####
+
+- alias: Opponent Goal
+  trigger:
+  - platform: state
+    entity_id: sensor.nhl_home_score
+  - platform: state
+    entity_id: sensor.nhl_away_score
+  condition:
+  - condition: template
+    value_template: >
+      {{ trigger.to_state is not none and trigger.from_state is not none and
+         trigger.to_state.state|int > trigger.from_state.state|int
+      }}
+  - condition: template
+    value_template: "{{ trigger.from_state.attributes.friendly_name != 'Chicago Blackhawks' }}"
+  action:
+  - service: scene.create
+    data:
+      scene_id: current_scene
+      snapshot_entities:
+      - light.wled_family_ceiling
+      - light.family_right_lamp
+      - light.family_left_lamp
+      - light.family_floor_lamp
+      - light.hallway_strip
+      - light.desk_lamp
+      - light.desk_lightstrip
+      - light.bed_lamp
+      - light.alexs_lamp
+      - light.danas_lamp
+      - light.kitchen_sink
+      - light.kitchen_ceiling
+      - light.kitchen_table
+      - light.front_hallway
+      - group.decorations
+  - service: light.turn_on
+    data:
+      entity_id: light.wled_family_ceiling
+      rgb_color: [255,0,0]
+      brightness: 255
+      effect: '[FX=15] Running'
+  - delay: 15
+  - service: scene.turn_on
+    entity_id: scene.current_scene
+
+#### Flashes Lights and Plays Stranglehold Five Minutes Before Scheduled Game Start ####
+
+- alias: Blackhawks Game Start
+  trigger:
+  - platform: template
+    value_template: "{% if states.sensor.nhl_period.state == (now().strftime('%I:') + (now().minute+5) | string + now().strftime(' %p')) %}true{% endif %}"
+  condition:
+  - condition: state
+    entity_id: sensor.nhl_game_status
+    state: 'Pre-Game'
+  action:
+  - service: script.turn_on
+    entity_id: script.game_start
+
+#### Flashes Lights and Plays Goal Horn and Chelsea Dagger At End of Game When Hawks Win ####
+
+- alias: Blackhawks Win
+  trigger:
+  - platform: state
+    entity_id: sensor.nhl_game_status
+    to: 'Final'
+  condition:
+  - condition: template
+    value_template: >
+      {{ (states.sensor.nhl_home_score.state|int < states.sensor.nhl_away_score.state|int 
+         and is_state_attr('sensor.nhl_away_score', 'friendly_name', 'Chicago Blackhawks')) or
+         (states.sensor.nhl_home_score.state|int > states.sensor.nhl_away_score.state|int 
+         and is_state_attr('sensor.nhl_home_score', 'friendly_name', 'Chicago Blackhawks'))
+      }}
+  action:
+  - service: script.turn_on
+    entity_id: script.goal_start
+  - service: homeassistant.turn_on
+    entity_id: input_boolean.goaling

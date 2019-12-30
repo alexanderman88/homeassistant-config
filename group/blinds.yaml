@@ -1,0 +1,24 @@
+Kitchen Blinds:
+  entities:
+    - cover.kitchen_blind_one
+    - cover.kitchen_blind_two
+    - cover.kitchen_blind_three
+    - cover.kitchen_blind_four
+
+Family Room Blinds:
+  entities:
+    - cover.family_room_blind_one
+    - cover.family_room_blind_two
+    - cover.family_room_blind_three
+    - cover.family_room_blind_four
+
+Blinds:
+  entities:
+    - cover.kitchen_blind_one
+    - cover.kitchen_blind_two
+    - cover.kitchen_blind_three
+    - cover.kitchen_blind_four
+    - cover.family_room_blind_one
+    - cover.family_room_blind_two
+    - cover.family_room_blind_three
+    - cover.family_room_blind_four

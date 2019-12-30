@@ -1,0 +1,219 @@
+
+#### Phone Notifications for Alarm Changes ####
+
+- alias: Phone Armed Away Notification
+  trigger:
+    platform: state
+    entity_id: alarm_control_panel.ring_alarm
+    to: 'armed_away'
+  action:
+    - service: notify.mobile_app_alex_s_phone
+      data:
+        message: "Ring is Armed Away"
+
+- alias: Phone Disarmed Notification
+  trigger:
+    platform: state
+    entity_id: alarm_control_panel.ring_alarm
+    to: 'disarmed'
+  action:
+    - service: notify.mobile_app_alex_s_phone
+      data:
+        message: "Ring is Disarmed"
+
+#### TV Notifications for Locks and Alarm Changes ####
+
+- alias: TV Armed Home Notification
+  trigger:
+    platform: state
+    entity_id: alarm_control_panel.ring_alarm
+    to: 'armed_home'
+  action:
+    - service: notify.master_bedroom
+      data:
+        message: "Ring is Armed Home"
+    - service: notify.livingroom_tv
+      data:
+        message: "Ring is Armed Home"
+
+- alias: TV Doorbell Rang Notification
+  trigger:
+    platform: state
+    entity_id: binary_sensor.ring_front_door_ding
+    to: 'on'
+  action:
+    - service: notify.master_bedroom
+      data:
+        message: "Someone is at the Front Door"
+    - service: notify.livingroom_tv
+      data:
+        message: "Someone is at the Front Door"
+
+- alias: TV Back Door Open Notification
+  trigger:
+    platform: state
+    entity_id: binary_sensor.side_door
+    to: 'on'
+  action:
+    - service: notify.master_bedroom
+      data:
+        message: "Back Door is Open"
+    - service: notify.livingroom_tv
+      data:
+        message: "Back Door is Open"
+
+- alias: TV North Bedroom North Window Open Notification
+  trigger:
+    platform: state
+    entity_id: binary_sensor.north_bedroom_north_window
+    to: 'on'
+  action:
+    - service: notify.master_bedroom
+      data:
+        message: "North Bedroom North Window is Open"
+    - service: notify.livingroom_tv
+      data:
+        message: "North Bedroom North Window is Open" 
+ 
+- alias: TV North Bedroom East Window Open Notification
+  trigger:
+    platform: state
+    entity_id: binary_sensor.north_bedroom_east_window
+    to: 'on'
+  action:
+    - service: notify.master_bedroom
+      data:
+        message: "North Bedroom East Window is Open"
+    - service: notify.livingroom_tv
+      data:
+        message: "North Bedroom East Window is Open"
+
+- alias: TV Guest Bathroom Window Open Notification
+  trigger:
+    platform: state
+    entity_id: binary_sensor.guest_bathroom_window
+    to: 'on'
+  action:
+    - service: notify.master_bedroom
+      data:
+        message: "Guest Bathroom Window is Open"
+    - service: notify.livingroom_tv
+      data:
+        message: "Guest Bathroom Window is Open"
+
+- alias: TV South Bedroom East Window Open Notification
+  trigger:
+    platform: state
+    entity_id: binary_sensor.south_bedroom_east_window
+    to: 'on'
+  action:
+    - service: notify.master_bedroom
+      data:
+        message: "South Bedroom East Window is Open"
+    - service: notify.livingroom_tv
+      data:
+        message: "South Bedroom East Window is Open"
+
+- alias: TV South Bedroom South Window Open Notification
+  trigger:
+    platform: state
+    entity_id: binary_sensor.south_bedroom_south_window
+    to: 'on'
+  action:
+    - service: notify.master_bedroom
+      data:
+        message: "South Bedroom South Window is Open"
+    - service: notify.livingroom_tv
+      data:
+        message: "South Bedroom South Window is Open"
+
+- alias: TV Family Room South Window Open Notification
+  trigger:
+    platform: state
+    entity_id: binary_sensor.south_family_room_window
+    to: 'on'
+  action:
+    - service: notify.master_bedroom
+      data:
+        message: "Family Room South Window is Open"
+    - service: notify.livingroom_tv
+      data:
+        message: "Family Room South Window is Open"
+
+- alias: TV Family Room West Window Open Notification
+  trigger:
+    platform: state
+    entity_id:  binary_sensor.west_family_room_window
+    to: 'on'
+  action:
+    - service: notify.master_bedroom
+      data:
+        message: "Family Room West Window is Open"
+    - service: notify.livingroom_tv
+      data:
+        message: "Family Room West Window is Open"
+
+- alias: TV Kitchen West Window Open Notification
+  trigger:
+    platform: state
+    entity_id: binary_sensor.west_kitchen_window
+    to: 'on'
+  action:
+    - service: notify.master_bedroom
+      data:
+        message: "Kitchen West Window is Open"
+    - service: notify.livingroom_tv
+      data:
+        message: "Kitchen West Window is Open"
+
+- alias: TV Kitchen North Window Open Notification
+  trigger:
+    platform: state
+    entity_id: binary_sensor.north_kitchen_window
+    to: 'on'
+  action:
+    - service: notify.master_bedroom
+      data:
+        message: "Kitchen North Window is Open"
+    - service: notify.livingroom_tv
+      data:
+        message: "Kitchen North Window is Open"
+
+- alias: TV Kitchen Sink Window Open Notification
+  trigger:
+    platform: state
+    entity_id: binary_sensor.kitchen_sink_window
+    to: 'on'
+  action:
+    - service: notify.master_bedroom
+      data:
+        message: "Kitchen Sink Window is Open"
+    - service: notify.livingroom_tv
+      data:
+        message: "Kitchen Sink Window is Open"
+
+- alias: TV Front Door Unlocked Notification
+  trigger:
+    platform: state
+    entity_id: lock.front_door
+    to: 'unlocked'
+  action:
+    - service: notify.master_bedroom
+      data:
+        message: "Front Door is Unlocked"
+    - service: notify.livingroom_tv
+      data:
+        message: "Front Door is Unlocked"
+
+- alias: TV Back Door Unlocked Notification
+  trigger:
+    platform: state
+    entity_id: lock.back_door
+    to: 'unlocked'
+  action:
+    - service: notify.master_bedroom
+      data:
+        message: "Back Door is Unlocked"
+    - service: notify.livingroom_tv
+      data:
+        message: "Back Door is Unlocked"

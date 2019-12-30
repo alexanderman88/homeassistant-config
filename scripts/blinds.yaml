@@ -1,0 +1,99 @@
+#### Grouped Blinds Broadlink Commands ####
+
+all_blinds_up:
+  sequence:
+    - service: broadlink.send
+      data:
+        host: 192.168.1.100
+        packet:
+          - "sgGwBAkTChMJFBQJEwoJFBMJFAkJFBQJCRMKExQJCRQUCRMKEwoTCRQJCRQJFAkUEwoIFAkUFAkTChMKEwkUCRQJEwoTChMJFAkUCRMKEwoTCRQJFAkTChMKEwkUCQkUCRQJFAkTFAkJFBQJEwoJFAkUEwkUCRQJEwoJExQJFKSjFBQJCRQTCgkTCRQJFBQJEwoJExQKEwkJFBMKCRQJExQKCBQUCRMKEwkUCRQJCRQJFAkUEwkJFAkUFAkUCRMKEwkUCRQJEwoTChMJFAkUCRMKEwoTCRQJFAkTChMKEwkUCQkUCRQJFAkUEwoIFBQJEwoJFAkTFAkUCRMKEwoJFBMJFKSjFBQJCRQTCgkTCRQJFBMKEwkKFBMJFAkJFBQJCRMKFBMJCRQTChQJEwkUCRQJCRQJFAkUEwkJFAkUEwoTChMJFAkUCRMKEwoTCRQJFAkTChMKEwkUChMJFAkTChMKEwkUCQkUCRQJEwoUEwkJFBMKEwoJEwkUFAkUCRMKEwoJExQJEwABIQkUCRQJEwkUCRQJFAkUCRSjFBQJCRQTCggUCRQJFBMKEwoJExQJFAkJFBMKCRQJExQJCRQTChMJFAoTCRQJCRQJFAkUEwkJFAkUEwoTChMJFAkUCRQJEwkUCRQJFAkTChMKEwkUCRMKFAkTCRQJFAkTCgkUCRMUCQkUCRQUCQkUCRMJFBQJCRQUCQkUEwoTCQkUE6SkFBMJChQTCQkUCRQJFBMJFAkJFBQJEwoJExQJChMJFBQJCRQTCRQJFAkUCRMKCRQJFAkTFAkJFAkUEwoTCRQJFAkUCRMKEwoTCRQJFAkUCRMKEwkUCRQJFAkTChMKEwkUCQkUCRQTCgkTCRQUCQkUCRQJFBMJChMUCQkUFAkUCQkTFKSjFRMJChMUCQkUCRQJExQJFAkJFBQJEwkKExQJCRQJFBQJCRQTCRQJFAkUCRMKCRMKEwkUFAkJFAkUEwkUCRQJFAkUCRMKEwkUChMJFAkTChMJFAkUCRQJFAkTChMJFAkUCQkUCRQTCgkTCRQUCQkUCRMKExQJCRQUCQkUEwoTCgkTFKSjFBQJCRQTCgkTChQIFBQJFAkJFBMKEwkJFBQJCRQJFBMKCRMUCRQJFAkUCRMJChMKEwkUFAkJFAkTFAkUCRQJFAkUCRMJFAkUCRQJEwoTCRQKEwkUCRQJEwoTCRQJFAkUCQkUCRMUCQoTCRQUCQkUCRMKExQJCRQTCgkUEwkUCQkUFKOkFBQJCRQUCQkTChMKExQJFAkJFBQJEwkKExQJCRMKFBMJChMUCRQJEwoTChMJCRQJFAkUEwoJEwoTFAkUCRQJEwoTCRQJFAkUCRQJEwkUCRQJFAkUCRMKEwkUCRQJFAkUCQkUCRMUCQkUCRQTCQoTChMJFBQJCRQUCAoTFAkUCQkUE6SkFBQJCRMUCQkUCRQJFBQJEwkKExQJFAkJFBQJCRMKExQJCRQTChQIFAkUCRQJCRQJFAkUEwkJFAkUFAkUCRMJFAkUCRQJEwoTCRQJFAkUCRQJFAkTChMJFAkUCRMKEwkUCQoTCRQTCgkTChMUCQkUCRQJFBMKCRQTCQkUFAkTCgkTFAAF3AAAAAAAAAAA"
+
+all_blinds_stop:
+  sequence:
+    - service: broadlink.send
+      data:
+        host: 192.168.1.100
+        packet:
+          - "sgAqAwkUCRQJFAkUCRMKEwoTCRSjFRMJCRQUCQkUCRQJFBMKEwkJFBQJEwoJFBMKCBQJFBQJCRQTChMJFAkTChMKCRMKFAgUFAkJFAkUEwoTChMJFAoTCRQJEwoTChMJFAkTChQJEwkUCRQJFAkTChMKEwkUCQkUCRQUCQkTCRQJFBQJEwoJFBMKCBQTCgkUEwoJFBMJFKSjFBMKCRQTCgkTChMJFBQJEwoJFBMJFAoIFBQJCRQJFBMJChMUCRQJEwoUCRMJCRQJFAkUEwoJEwoTFAkUCRMKEwoTChMKEwkUCRMKEwoTCRQJFAkTChMKEwoTCRQJFAkTCgkTCRUTCQkUCRQJFBMKEwkJFBQJCRQTCggVEwkJFBQJE6SkFBMJChMUCQkUCRQJFBMKEwoIFBQJEwoJFBMKCRMJFBMKCRQTChMKEwkUCRQJCRQJFAkUEwkJFAkUFAkTChMKEwkUCRQJEwoTChMKEwkUCRMKEwkUChMKEwkUCRMKEwoTCQkUCRQUCQkUCRQJExQJFAkJFBMKCRQTCQkUEwoJFBMKE6SjFRMKCRMUCQkUCRQJFBMKEwkJFBQJFAkJExQKCBQJFBMKCRQTChMJFAkTChQJCRQJFAkTFAkJFAkUEwoTChMKEwkTChMKEwoTChMJFAkUCRMKEwkUChMJFAkTChQJEwkUCQkUCRQTCgkUCRMJFBQJFAkJFBMKCRQTCQkUFAkJFBMJFKSjFRMJCRQTCgkUCRQJFBMJFAkJFBMKEwkJFRMJCRQJFBMKCRQTCRQJFAkTChMKCRQJEwkUFAkJFAgVEwoTCRQJEwoUCRMJFAkUCRQJEwoTChMJFAkTChMKEwoTCRQJFAkUCQkUCRQTCQkUCRQJFBQJEwkKExQJCRQTCgkUEwkJFBMKE6WjFBMKCRQTCQkUCRQJFBQJEwoIFRMJFAkJFBQJCRQJExQJCRQTChMKEwkUCRQJCRQJFAkTFAoIFAkUFAkTChMJFAkUCRQJEwoTChMJFAkUCRMKEwoTCRQJFAkUCRMKEwoTCQkUCRQTCgkUCRQIFBQJFAkJFBMKCRMUCggUFAkJFBMKEwAF3AAAAAAAAAAAAAAAAAAA"
+
+all_blinds_down:
+  sequence:
+    - service: broadlink.send
+      data:
+        host: 192.168.1.100
+        packet:
+          - "sgGwBAkTCRQJFBQJFAkJFBMKEwkJFBQJCRQJFBMJCRUTCRQJEwoTChMJChMJFAkUFAkJFAkTFAkUCRQJFAkTChMJFAkUCRQJFAkTChMKEwkUCRQJEwoTChMJFAoTCQkUEwoJFAkUCBQJFBQJEwoJFBMJFAkUCQkUFAkJFBMKE6SkFBMJCRQUCQkUCRQJFBMJFAkJFBMKFAkJExQJCRQJFBMKCRQTChMJFAkUCRMKCRQJFAgUFAkJFAkUEwoTCRQJFAkUCRQJEwoTCRQJFAkTChMKEwoTCRQJFAkTChMKEwkUCggUFAkJFAkUCRQIFBQJFAkJFBMKEwoTCQkUFAkJFBMJFKSjFRMJCRQUCQkUCRQJFBMJFAkJFBQJEwoJFBMKCBQJFBQJCRQTChMJFAkUCRQJCRQJFAkUEwkJFAkUEwoTChMKEwkUCRQJFAkTChMKEwkUCRMKFAkTChMKEwkUCRMKFAkTCgkUEwkJFAkUCRMKFBMJFAkJFBMKEwoTCQoTFAkJFBMJFAABQQoTCRQJFAkUCRQJEwoUCROkFBQJCRQTCggVCBQJFBQJEwoJExQKEwkJFBMKCRQJFBMJCRQUCRMKEwoTCRQJCRQJFAkUEwoJEwkUFAkUCRMKFAkTCRQJFAkUCRQJEwoTCRQJFAkUCRMKEwoTCRQJFAkUCQkUCRMUCggUCRQTCgkTChMJFBQJCRQUCQkUEwoTCQkUE6WjFBQJCRQTCgkTCRQJFBQJFAkJFBMKEwkJFBQJCRQJFBQJCRQTCRQJFAkUCRMKCRQJEwoTFAkJFAkUEwoTChMJFAkUCRMKEwoTCRQJFAkUCRMKEwoTCRQJFAkUCRQJEwkUCQkUCRQUCQkUCRQTCQkUCRQJFBMKCRQTCgkUEwoTCQkUE6SkFBQJCRQUCQkTChMJFBQJFAkJFBMKEwkJFBQJCRQJFBMKCRQTCRQJFAkUCRMKCRMKEwoUEwkJFAkUFAkTChMKEwkUCRQJEwoTCRQKEwoTCRQJEwoTChMJFAoTCRQJEwoTCgkTChMUCQkUCRQTCQoTChMJFBQJCRQUCQkUEwkUCggUFKSjFRMJCRQTCgkTChQJExQKEwkJFBQJEwoJFBMKCBQJFBQJCRQTChMJFAkUCRQJCRQJFAkUEwkJFAkUFAkUCRMKEwoTCRQJFAkTChMKEwoTCRQJFAkTChMKEwkUCRQJFAkTCgkUCRQTCQkUCRQUCQkUCRQJFBMKCBQUCQkUEwoTCggUFKSjFRMJCRQUCQkUCRQJFBMKEwkJFBQJFAkJFBMKCRQIFBQJCRQTChMJFAkUCRQJCRQJFAkUEwoIFAkUFAkUCRQJEwoTChMJFAkUCRQJEwkUCRQKEwkUCRMKEwoTChMJFAkUCQkUCRQTCQkVCBQUCQkUCRQJFBMJCRQUCQkUFAkTCgkTFKSkFBMKCRQTCQkUCRQJFBMKEwkJFBQJFAkJFBMKCRQIFBQKCBQUCRMKEwoTCRQJCRQJFAkUEwoJFAkUEwkUCRQJFAkUCRMJFAkUCRQJEwoTChMJFAkUCRQJFAkTCRQKEwkUCQkUCRQTCgkTCRQUCQkUCRQJFBMKCRMUCQkUFAkUCQkTFAAF3AAAAAAAAAAA"
+
+#### Combined Family Room and Kitchen Blinds as One Entity ####
+
+blinds:
+  sequence:
+    - service_template: >
+        {% if modus  == 'open' %}
+          script.all_blinds_up
+        {% elif modus == 'close' %}
+          script.all_blinds_down
+        {% elif modus == 'stop' %}
+          script.all_blinds_stop
+        {% endif %}
+    - service: input_number.set_value
+      data_template:
+        entity_id:
+          - input_number.family_room_blind_one_position
+          - input_number.family_room_blind_two_position
+          - input_number.family_room_blind_three_position
+          - input_number.family_room_blind_four_position
+          - input_number.kitchen_blind_one_position
+          - input_number.kitchen_blind_two_position
+          - input_number.kitchen_blind_three_position
+          - input_number.kitchen_blind_four_position
+        value: >
+          {% if modus  == 'open' %}
+            100.0
+          {% elif modus == 'close' %}
+            0.0
+          {% endif %}
+
+#### Controls Position of RF Blinds Based on Current Position and Opening/Closing Time of Blinds ####
+        
+set_cover_position:
+  sequence:
+    - service_template: >
+        {% if position_set | float  == 0 %}
+          script.{{entity_id|replace('cover.','')}}_down
+        {% elif position_set | float == 100 %}
+          script.{{entity_id|replace('cover.','')}}_up
+        {% elif position_set | float > states(position_previous) | float %}
+          script.{{entity_id|replace('cover.','')}}_up
+        {% elif position_set | float < states(position_previous) | float %}
+          script.{{entity_id|replace('cover.','')}}_down
+        {% endif %}
+      data_template:
+        entity_id: "{{ entity_id }}"
+    - delay:
+          seconds: >
+            {% if position_set | float == 0 %}
+              {{ ( states(position_previous) | float / 100 * closing_time | round ) | int }}
+            {% elif position_set | float == 100 %}
+              {{ ( ( 100 - states(position_previous) | float ) / 100 * opening_time | round ) | int }}
+            {% elif position_set | float > states(position_previous) | float %}
+              {{ (( position_set | float - states(position_previous) | float ) / 100 * opening_time | round ) | int }}
+            {% elif position_set | float < states(position_previous) | float %}
+              {{ (( states(position_previous) | float - position_set | float ) / 100 * closing_time | round ) | int }}
+            {% endif %}
+    - service_template: >
+        {% if position_set | float == 0 %}
+          script.{{entity_id|replace('cover.','')}}_down
+        {% elif position_set | float == 100 %}
+          script.{{entity_id|replace('cover.','')}}_up
+        {% elif position_set | float > states(position_previous) | float %}
+          script.{{entity_id|replace('cover.','')}}_stop
+        {% elif position_set | float < states(position_previous) | float %}
+          script.{{entity_id|replace('cover.','')}}_stop
+        {% endif %}
+      data_template:
+        entity_id: "{{ entity_id }}"
+    - service: input_number.set_value
+      data_template:
+        entity_id: "{{ position_previous }}"
+        value: "{{ position_set }}"

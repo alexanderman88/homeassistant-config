@@ -1,0 +1,54 @@
+- name: Bright
+  entities:
+    
+    # Family Room Lights
+    light.family_right_lamp:
+      state: on
+      brightness: 255
+      color_temp: 335
+    light.family_left_lamp:
+      state: on
+      brightness: 255
+      color_temp: 335
+    light.family_floor_lamp:
+      state: on
+      brightness: 255
+    light.wled_family_ceiling:
+      state: on
+      rgb_color: [255, 197, 143]
+      brightness: 255
+      effect: '[FX=00] Solid'
+    light.hallway_strip:
+      state: on
+      effect: solid
+      brightness: 255
+      rgb_color: [255, 90, 36]
+    
+    # Bedroom Lights
+    light.bed_lamp:
+      state: on
+      brightness: 255
+      color_temp: 335
+    light.alexs_lamp:
+      state: on
+      brightness: 255
+      color_temp: 335
+    light.danas_lamp:
+      state: on
+      brightness: 255
+      color_temp: 335
+    light.desk_lamp:
+      state: on
+      brightness: 255
+      color_temp: 335
+    light.desk_lightstrip:
+      state: on
+      brightness: 255
+      color_temp: 335
+
+    # Kitchen Lights
+    light.kitchen_sink:
+      state: on
+    light.kitchen_table:
+      state: on
+      brightness: 255

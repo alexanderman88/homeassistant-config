@@ -1,0 +1,62 @@
+
+#### Turns Lights On When Sun is 3.5 Degrees Above the Horizon ####
+
+- alias: 'Good Evening'
+  trigger:
+    - platform: numeric_state
+      entity_id: sun.sun
+      value_template: '{{ state.attributes.elevation }}'
+      below: 3.5
+  condition:
+    - condition: time
+      before: '21:00:00'
+    - condition: time
+      after: '10:00:00'
+  action:
+    - service: script.turn_on
+      entity_id: script.evening
+
+#### Kitchen Sink Light Left on as Night Light Until 11:30 PM ####
+
+- alias: 'Kitchen Sink Night Light Off'
+  trigger:
+    - platform: time
+      at: '23:30'
+  action:
+    service: light.turn_off
+    entity_id: light.kitchen_sink
+
+#### Otudoor Lights Off ####
+
+- alias: 'Outdoor Lights Off'
+  trigger:
+    platform: time
+    at: '6:00'
+  action:
+    - service: light.turn_off
+      entity_id: light.front_door
+    - service: light.turn_off
+      entity_id: light.back_door
+      
+- alias: 'Outside Decorations Off'
+  trigger:
+    platform: time
+    at: '1:30'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.ge_14284_outdoor_smart_switch_switch
+
+#### Turns on Light By Front Door For 2 Minutes When Door is Unlocked ####
+
+- alias: 'Front Hallway Light Unlocked Door'
+  trigger:
+    platform: state
+    entity_id: lock.front_door
+    to: 'unlocked'
+  action:
+    - service: light.turn_on
+      entity_id: light.front_hallway
+    - delay: 120
+    - service: light.turn_off
+      entity_id: light.front_hallway
+

@@ -1,0 +1,211 @@
+goal_start:
+  sequence:
+    - service: scene.create
+      data:
+        scene_id: current_scene
+        snapshot_entities:
+        - light.wled_family_ceiling
+        - light.family_right_lamp
+        - light.family_left_lamp
+        - light.family_floor_lamp
+        - light.hallway_strip
+        - light.desk_lamp
+        - light.desk_lightstrip
+        - light.bed_lamp
+        - light.alexs_lamp
+        - light.danas_lamp
+        - light.kitchen_sink
+        - light.kitchen_ceiling
+        - light.kitchen_table
+        - light.front_hallway
+        - group.decorations
+    - service: script.turn_on
+      entity_id: script.goal_repeat
+    - service: media_player.play_media
+      data:
+        entity_id: media_player.home_group
+        media_content_id: http://192.168.1.40:8123/local/audio/Chicago%20Blackhawks%202018%20Goal%20Horn.mp3
+        media_content_type: audio/mp3
+    - service: light.turn_on
+      data:
+        entity_id: light.wled_family_ceiling
+        rgb_color: [255,0,0]
+        brightness: 255
+        effect: '[FX=15] Running'
+    - service: light.turn_on
+      data:
+        entity_id: light.hallway_strip
+        effect: goal
+        brightness: 255
+
+goal_loop:
+  sequence:
+      - condition: state
+        entity_id: input_boolean.goaling
+        state: 'on'
+      - service: light.turn_on
+        data:
+          entity_id: light.desk_lamp
+          rgb_color: [255, 0, 0]
+          brightness: 255
+          transition: 0.25
+      - service: light.turn_on
+        data:
+          entity_id: light.desk_lightstrip
+          rgb_color: [255, 0, 0]
+          brightness: 255
+          transition: 0.25
+      - service: light.turn_on
+        data:
+          entity_id: light.family_floor_lamp
+          rgb_color: [255, 0, 0]
+          brightness: 255
+          transition: 0.25
+      - service: light.turn_on
+        data:
+          entity_id: light.family_right_lamp
+          rgb_color: [255, 0, 0]
+          brightness: 255
+          transition: 0.25
+      - service: light.turn_on
+        data:
+          entity_id: light.family_left_lamp
+          rgb_color: [255, 0, 0]
+          brightness: 255
+          transition: 0.25
+      - service: light.turn_on
+        data:
+          entity_id: light.kitchen_sink
+      - service: light.turn_on
+        data:
+          entity_id: light.front_hallway
+      - service: light.turn_on
+        data:
+          entity_id: light.bed_lamp
+          rgb_color: [255, 0, 0]
+          brightness: 255
+          transition: 0.25
+      - service: homeassistant.turn_on
+        entity_id: group.decorations
+      - delay:
+          seconds: 0.25
+      - condition: state
+        entity_id: input_boolean.goaling
+        state: 'on'
+      - service: light.turn_off
+        data:
+          entity_id: light.desk_lamp
+          transition: 0.25
+      - service: light.turn_off
+        data:
+          entity_id: light.desk_lightstrip
+          transition: 0.25
+      - service: light.turn_off
+        data:
+          entity_id: light.family_floor_lamp
+          transition: 0.25
+      - service: light.turn_off
+        data:
+          entity_id: light.family_right_lamp
+          transition: 0.25
+      - service: light.turn_off
+        data:
+          entity_id: light.family_left_lamp
+          transition: 0.25
+      - service: light.turn_off
+        data:
+          entity_id: light.kitchen_sink
+      - service: light.turn_off
+        data:
+          entity_id: light.front_hallway
+      - service: light.turn_off
+        data:
+          entity_id: light.bed_lamp
+          transition: 0.25
+      - service: homeassistant.turn_off
+        entity_id: group.decorations
+      - delay:
+          seconds: 0.25
+      - alias: loop
+        service: script.turn_on
+        data:
+          entity_id: script.goal_repeat
+
+goal_repeat:
+  sequence:
+      - condition: state
+        entity_id: input_boolean.goaling
+        state: 'on'
+      - service: script.turn_on
+        entity_id: script.goal_loop
+
+goal_stop:
+  sequence:
+    - service: homeassistant.turn_off
+      entity_id: script.goal_loop
+    - service: homeassistant.turn_off
+      entity_id: script.goal_repeat
+    - delay:
+        seconds: 5
+    - service: scene.turn_on
+      entity_id: scene.current_scene
+
+game_start:
+  sequence:
+    - service: scene.create
+      data:
+        scene_id: current_scene
+        snapshot_entities:
+        - light.wled_family_ceiling
+        - light.family_right_lamp
+        - light.family_left_lamp
+        - light.family_floor_lamp
+        - light.hallway_strip
+        - light.desk_lamp
+        - light.desk_lightstrip
+        - light.bed_lamp
+        - light.alexs_lamp
+        - light.danas_lamp
+        - light.kitchen_sink
+        - light.kitchen_ceiling
+        - light.kitchen_table
+        - light.front_hallway
+        - group.decorations
+    - service: script.turn_on
+      entity_id: script.goal_repeat
+    - service: media_player.play_media
+      data:
+        entity_id: media_player.home_group
+        media_content_id: http://192.168.1.40:8123/local/audio/Ted%20Nugent%20Stranglehold.mp3
+        media_content_type: audio/mp3
+    - service: light.turn_on
+      data:
+        entity_id: light.wled_family_ceiling
+        rgb_color: [255,0,0]
+        brightness: 255
+        effect: '[FX=15] Running'
+    - service: light.turn_on
+      data:
+        entity_id: light.hallway_strip
+        effect: goal
+        brightness: 255
+    - delay:
+        seconds: 143
+    - service: media_player.turn_off
+      entity_id: media_player.family_room_speaker
+    - service: media_player.turn_off
+      entity_id: media_player.googlehome9756
+    - service: scene.turn_on
+      entity_id: scene.current_scene
+
+nhl_update:
+  alias: Update NHL Game Info
+  sequence:
+    - service: homeassistant.update_entity
+      entity_id: sensor.nhl_game_status
+    - service: homeassistant.update_entity
+      entity_id: sensor.nhl_away_score   
+    - service: homeassistant.update_entity
+      entity_id: sensor.nhl_home_score
+
+
