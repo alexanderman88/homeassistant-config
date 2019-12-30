@@ -11,12 +11,15 @@
 .storage
 .cloud
 .google.token
+
+# Include folders
 !automation
 !group
 !light
 !scene
 !scripts
 !themes
+!www/Dashboard/**
 
 # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
 ip_bans.yaml
