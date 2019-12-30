@@ -46,3 +46,10 @@ I am running Home Assistant Version __0.103.4__
 * [Amazon Echo Dot](https://www.amazon.com/gp/product/B07PDHSLM6/)
 * [Amazon Echo Show 5](https://www.amazon.com/gp/product/B07HZLHPKP/)
 
+# Dashboards
+
+## Main
+
+### Light
+
+![Main](/dashboard/Main.png)
