@@ -62,21 +62,21 @@ I am running Home Assistant Version __0.103.4__
 
 ### Light
 
-![Living Room](/dashboard/Living Room.png)
+![Living Room](/dashboard/Living%20Room.png)
 
 ### Dark
 
-![Living Room Dark](/dashboard/Living Room - Dark.png)
+![Living Room Dark](/dashboard/Living%20Room%20-%20Dark.png)
 
 ## Master Bedroom
 
 ### Light
 
-![Master Bedroom](/dashboard/Master Bedroom.png)
+![Master Bedroom](/dashboard/Master%20Bedroom.png)
 
 ### Dark
 
-![Master Bedroom Dark](/dashboard/Master Bedroom - Dark.png)
+![Master Bedroom Dark](/dashboard/Master%20Bedroom%20-%20Dark.png)
 
 ## Music
 
@@ -86,17 +86,17 @@ I am running Home Assistant Version __0.103.4__
 
 ### Dark
 
-![Music Dark](/dashboard/Music - Dark.png)
+![Music Dark](/dashboard/Music%20-%20Dark.png)
 
 ## Alarm Panel
 
 ### Light
 
-![Alarm Panel](/dashboard/Alarm Panel.png)
+![Alarm Panel](/dashboard/Alarm%20Panel.png)
 
 ### Dark
 
-![Alarm Panel Dark](/dashboard/Alarm Panel - Dark.png)
+![Alarm Panel Dark](/dashboard/Alarm%20Panel%20-%20Dark.png)
 
 ## Bedrooms
 
@@ -106,7 +106,7 @@ I am running Home Assistant Version __0.103.4__
 
 ### Dark
 
-![Bedrooms Dark](/dashboard/Bedrooms - Dark.png)
+![Bedrooms Dark](/dashboard/Bedrooms%20-%20Dark.png)
 
 ## Utilities
 
@@ -116,4 +116,4 @@ I am running Home Assistant Version __0.103.4__
 
 ### Dark
 
-![Utilities Dark](/dashboard/Utilities - Dark.png)
+![Utilities Dark](/dashboard/Utilities%20-%20Dark.png)
