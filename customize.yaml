@@ -1,0 +1,100 @@
+switch.family_room_wax_melt:
+  friendly_name: Family Room Wax Melt
+  icon: mdi:lamp
+light.desk_lightstrip:
+  icon: mdi:led-strip
+zwave.ge_14291_inwall_smart_switch:
+  friendly_name: Back Door
+  node_name: Back Door
+  product_name: Back Door
+switch.ge_14291_inwall_smart_switch_switch:
+  friendly_name: Back Door
+zwave.schlage_be469_touchscreen_deadbolt_2:
+  friendly_name: Back Door Lock
+  node_name: Back Door Lock
+switch.kitchen_wax_melt:
+  friendly_name: Kitchen Wax Melt
+light.hallway_strip:
+  icon: mdi:led-strip
+light.front_hallway:
+  icon: mdi:ceiling-light
+binary_sensor.master_bedroom_co_alarm_1:
+  hidden: true
+binary_sensor.master_bedroom_smoke_alarm_1:
+  hidden: true
+binary_sensor.hallway_co_alarm_1:
+  hidden: true
+binary_sensor.hallway_smoke_alarm_1:
+  hidden: true
+light.alexs_lamp:
+  icon: mdi:lamp
+light.danas_lamp:
+  icon: mdi:lamp
+binary_sensor.guest_bathroom_window:
+  device_class: window
+binary_sensor.kitchen_sink_window:
+  device_class: window
+binary_sensor.north_bedroom_east_window:
+  device_class: window
+binary_sensor.north_bedroom_north_window:
+  device_class: window
+binary_sensor.north_kitchen_window:
+  device_class: window
+binary_sensor.south_bedroom_east_window:
+  device_class: window
+binary_sensor.south_bedroom_south_window:
+  device_class: window
+binary_sensor.south_family_room_window:
+  device_class: window
+binary_sensor.west_family_room_window:
+  device_class: window
+binary_sensor.west_kitchen_window:
+  device_class: window
+binary_sensor.east_basement_co_alarm:
+  device_class: gas
+group.locks:
+  icon: mdi:lock
+alarm_control_panel.alexa_guard:
+  icon: mdi:alarm-light
+group.family_room_windows:
+  assumed_state: true
+binary_sensor.ring_front_door_ding:
+  device_class: occupancy
+  icon: mdi:doorbell-video
+group.doorbell:
+  icon: mdi:doorbell-video
+switch.floor_fan:
+  icon: mdi:fan
+sensor.nhl_period:
+  icon: mdi:clock
+sensor.nhl_powerplay_status:
+  icon: mdi:hockey-sticks
+sensor.nhl_home_shots:
+  icon: mdi:hockey-puck
+sensor.nhl_away_shots:
+  icon: mdi:hockey-puck
+sensor.nhl_goalie_pulled:
+  icon: mdi:exclamation
+light.wled_light:
+  friendly_name: Family Room Ceiling
+cover.family_room_blinds:
+  assumed_state: true
+cover.kitchen_blinds:
+  assumed_state: true
+cover.blinds:
+  assumed_state: true
+cover.family_room_blind_four:
+  device_class: blind
+group.decorations:
+  icon: mdi:pine-tree
+light.bed_lamp:
+  icon: mdi:lamp
+light.family_floor_lamp:
+  icon: mdi:floor-lamp
+light.desk_lamp:
+  friendly_name: Desk Lamp
+  icon: mdi:desk-lamp
+light.family_left_lamp:
+  icon: mdi:lamp
+light.family_right_lamp:
+  icon: mdi:lamp

@@ -1,0 +1,67 @@
+
+#### Manual Seconds Delay for Goal Light ####
+
+goalfeed:
+  name: Goalfeed Delay
+  initial: 0
+  min: 0
+  max: 180
+  step: 1
+
+#### RF Motorized Blinds Position Tracking ####
+
+family_room_blind_one_position:
+  name: Family Room Blind One Position
+  unit_of_measurement: '%'
+  min: 0
+  max: 100
+  step: 1
+
+family_room_blind_two_position:
+  name: Family Room Blind Two Position
+  unit_of_measurement: '%'
+  min: 0
+  max: 100
+  step: 1
+
+family_room_blind_three_position:
+  name: Family Room Blind Three Position
+  unit_of_measurement: '%'
+  min: 0
+  max: 100
+  step: 1
+
+family_room_blind_four_position:
+  name: Family Room Blind Four Position
+  unit_of_measurement: '%'
+  min: 0
+  max: 100
+  step: 1
+
+kitchen_blind_one_position:
+  name: Kitchen Blind One Position
+  unit_of_measurement: '%'
+  min: 0
+  max: 100
+  step: 1
+
+kitchen_blind_two_position:
+  name: Kitchen Blind Two Position
+  unit_of_measurement: '%'
+  min: 0
+  max: 100
+  step: 1
+
+kitchen_blind_three_position:
+  name: Kitchen Blind Three Position
+  unit_of_measurement: '%'
+  min: 0
+  max: 100
+  step: 1
+
+kitchen_blind_four_position:
+  name: Kitchen Blind Four Position
+  unit_of_measurement: '%'
+  min: 0
+  max: 100
+  step: 1

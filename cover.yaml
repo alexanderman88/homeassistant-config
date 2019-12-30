@@ -1,0 +1,338 @@
+
+#### MyQ Garge Door Cover ####
+
+  - platform: myq
+    username: alexanderman88@gmail.com
+    password: a54Bdi71AZ9Cn1fz
+    type: chamberlain
+    
+#### RF Motorized Blinds Template Covers ####
+
+  - platform: template
+    covers:
+      family_room_blind_one:
+        friendly_name: "Family Room Blind One"
+        device_class: blind
+        position_template: "{{ states('input_number.family_room_blind_one_position') }}"
+        open_cover:
+          service: script.set_cover_position
+          data_template:
+            position_set: 100.0
+            position_previous: 'input_number.family_room_blind_one_position'
+            entity_id: 'cover.family_room_blind_one'
+            opening_time: 20
+            closing_time: 20
+        close_cover:
+          service: script.set_cover_position
+          data_template:
+            position_set: 0.0
+            position_previous: 'input_number.family_room_blind_one_position'
+            entity_id: 'cover.family_room_blind_one'
+            opening_time: 20
+            closing_time: 20
+        stop_cover:
+          service: script.family_room_blind_one_stop
+        set_cover_position:
+          service: script.set_cover_position
+          data_template:
+            position_set: '{{ position }}'
+            position_previous: 'input_number.family_room_blind_one_position'
+            entity_id: 'cover.family_room_blind_one'
+            opening_time: 20
+            closing_time: 20
+            
+      family_room_blind_two:
+        friendly_name: "Family Room Blind Two"
+        device_class: blind
+        position_template: "{{ states('input_number.family_room_blind_two_position') }}"
+        open_cover:
+          service: script.set_cover_position
+          data_template:
+            position_set: 100.0
+            position_previous: 'input_number.family_room_blind_two_position'
+            entity_id: 'cover.family_room_blind_two'
+            opening_time: 20
+            closing_time: 20
+        close_cover:
+          service: script.set_cover_position
+          data_template:
+            position_set: 0.0
+            position_previous: 'input_number.family_room_blind_two_position'
+            entity_id: 'cover.family_room_blind_two'
+            opening_time: 20
+            closing_time: 20
+        stop_cover:
+          service: script.family_room_blind_two_stop
+        set_cover_position:
+          service: script.set_cover_position
+          data_template:
+            position_set: '{{ position }}'
+            position_previous: 'input_number.family_room_blind_two_position'
+            entity_id: 'cover.family_room_blind_two'
+            opening_time: 20
+            closing_time: 20
+            
+      family_room_blind_three:
+        friendly_name: "Family Room Blind Three"
+        device_class: blind
+        position_template: "{{ states('input_number.family_room_blind_three_position') }}"
+        open_cover:
+          service: script.set_cover_position
+          data_template:
+            position_set: 100.0
+            position_previous: 'input_number.family_room_blind_three_position'
+            entity_id: 'cover.family_room_blind_three'
+            opening_time: 20
+            closing_time: 20
+        close_cover:
+          service: script.set_cover_position
+          data_template:
+            position_set: 0.0
+            position_previous: 'input_number.family_room_blind_three_position'
+            entity_id: 'cover.family_room_blind_three'
+            opening_time: 20
+            closing_time: 20
+        stop_cover:
+          service: script.family_room_blind_three_stop
+        set_cover_position:
+          service: script.set_cover_position
+          data_template:
+            position_set: '{{ position }}'
+            position_previous: 'input_number.family_room_blind_three_position'
+            entity_id: 'cover.family_room_blind_three'
+            opening_time: 20
+            closing_time: 20
+            
+      family_room_blind_four:
+        friendly_name: "Family Room Blind Four"
+        device_class: blind
+        position_template: "{{ states('input_number.family_room_blind_four_position') }}"
+        open_cover:
+          service: script.set_cover_position
+          data_template:
+            position_set: 100.0
+            position_previous: 'input_number.family_room_blind_four_position'
+            entity_id: 'cover.family_room_blind_four'
+            opening_time: 20
+            closing_time: 20
+        close_cover:
+          service: script.set_cover_position
+          data_template:
+            position_set: 0.0
+            position_previous: 'input_number.family_room_blind_four_position'
+            entity_id: 'cover.family_room_blind_four'
+            opening_time: 20
+            closing_time: 20
+        stop_cover:
+          service: script.family_room_blind_four_stop
+        set_cover_position:
+          service: script.set_cover_position
+          data_template:
+            position_set: '{{ position }}'
+            position_previous: 'input_number.family_room_blind_four_position'
+            entity_id: 'cover.family_room_blind_four'
+            opening_time: 20
+            closing_time: 20
+            
+      kitchen_blind_one:
+        friendly_name: "Kitchen Blind One"
+        device_class: blind
+        position_template: "{{ states('input_number.kitchen_blind_one_position') }}"
+        open_cover:
+          service: script.set_cover_position
+          data_template:
+            position_set: 100.0
+            position_previous: 'input_number.kitchen_blind_one_position'
+            entity_id: 'cover.kitchen_blind_one'
+            opening_time: 20
+            closing_time: 20
+        close_cover:
+          service: script.set_cover_position
+          data_template:
+            position_set: 0.0
+            position_previous: 'input_number.kitchen_blind_one_position'
+            entity_id: 'cover.kitchen_blind_one'
+            opening_time: 20
+            closing_time: 20
+        stop_cover:
+          service: script.kitchen_blind_one_stop
+        set_cover_position:
+          service: script.set_cover_position
+          data_template:
+            position_set: '{{ position }}'
+            position_previous: 'input_number.kitchen_blind_one_position'
+            entity_id: 'cover.kitchen_blind_one'
+            opening_time: 20
+            closing_time: 20
+            
+      kitchen_blind_two:
+        friendly_name: "Kitchen Blind Two"
+        device_class: blind
+        position_template: "{{ states('input_number.kitchen_blind_two_position') }}"
+        open_cover:
+          service: script.set_cover_position
+          data_template:
+            position_set: 100.0
+            position_previous: 'input_number.kitchen_blind_two_position'
+            entity_id: 'cover.kitchen_blind_two'
+            opening_time: 20
+            closing_time: 20
+        close_cover:
+          service: script.set_cover_position
+          data_template:
+            position_set: 0.0
+            position_previous: 'input_number.kitchen_blind_two_position'
+            entity_id: 'cover.kitchen_blind_two'
+            opening_time: 20
+            closing_time: 20
+        stop_cover:
+          service: script.kitchen_blind_two_stop
+        set_cover_position:
+          service: script.set_cover_position
+          data_template:
+            position_set: '{{ position }}'
+            position_previous: 'input_number.kitchen_blind_two_position'
+            entity_id: 'cover.kitchen_blind_two'
+            opening_time: 20
+            closing_time: 20
+            
+      kitchen_blind_three:
+        friendly_name: "Kitchen Blind Three"
+        device_class: blind
+        position_template: "{{ states('input_number.kitchen_blind_three_position') }}"
+        open_cover:
+          service: script.set_cover_position
+          data_template:
+            position_set: 100.0
+            position_previous: 'input_number.kitchen_blind_three_position'
+            entity_id: 'cover.kitchen_blind_three'
+            opening_time: 20
+            closing_time: 20
+        close_cover:
+          service: script.set_cover_position
+          data_template:
+            position_set: 0.0
+            position_previous: 'input_number.kitchen_blind_three_position'
+            entity_id: 'cover.kitchen_blind_three'
+            opening_time: 20
+            closing_time: 20
+        stop_cover:
+          service: script.kitchen_blind_three_stop
+        set_cover_position:
+          service: script.set_cover_position
+          data_template:
+            position_set: '{{ position }}'
+            position_previous: 'input_number.kitchen_blind_three_position'
+            entity_id: 'cover.kitchen_blind_three'
+            opening_time: 20
+            closing_time: 20
+            
+      kitchen_blind_four:
+        friendly_name: "Kitchen Blind Four"
+        device_class: blind
+        position_template: "{{ states('input_number.kitchen_blind_four_position') }}"
+        open_cover:
+          service: script.set_cover_position
+          data_template:
+            position_set: 100.0
+            position_previous: 'input_number.kitchen_blind_four_position'
+            entity_id: 'cover.kitchen_blind_four'
+            opening_time: 20
+            closing_time: 20
+        close_cover:
+          service: script.set_cover_position
+          data_template:
+            position_set: 0.0
+            position_previous: 'input_number.kitchen_blind_four_position'
+            entity_id: 'cover.kitchen_blind_four'
+            opening_time: 20
+            closing_time: 20
+        stop_cover:
+          service: script.kitchen_blind_four_stop
+        set_cover_position:
+          service: script.set_cover_position
+          data_template:
+            position_set: '{{ position }}'
+            position_previous: 'input_number.kitchen_blind_four_position'
+            entity_id: 'cover.kitchen_blind_four'
+            opening_time: 20
+            closing_time: 20
+            
+      #### Grouped Family Room Blinds as One Entity ####     
+            
+      family_room_blinds:
+        friendly_name: "Family Room Blinds"
+        device_class: blind
+        optimistic: true
+        open_cover:
+          service: script.family_room_blinds
+          data:
+            modus: 'open'
+        close_cover:
+          service: script.family_room_blinds
+          data:
+            modus: 'close'
+        stop_cover:
+          service: script.family_room_blinds
+          data:
+            modus: 'stop'
+        value_template: "{{is_state('sensor.family_room_blinds', 'open')}}"
+        entity_id:
+          - cover.family_room_blind_one
+          - cover.family_room_blind_two
+          - cover.family_room_blind_three
+          - cover.family_room_blind_four
+          
+      #### Grouped Kitchen Blinds as One Entity #### 
+      
+      kitchen_blinds:
+        friendly_name: "Kitchen Blinds"
+        device_class: blind
+        optimistic: true
+        open_cover:
+          service: script.kitchen_blinds
+          data:
+            modus: 'open'
+        close_cover:
+          service: script.kitchen_blinds
+          data:
+            modus: 'close'
+        stop_cover:
+          service: script.kitchen_blinds
+          data:
+            modus: 'stop'
+        value_template: "{{is_state('sensor.kitchen_blinds', 'open')}}"
+        entity_id:
+          - cover.kitchen_blind_one
+          - cover.kitchen_blind_two
+          - cover.kitchen_blind_three
+          - cover.kitchen_blind_four
+          
+      #### Grouped Family Room and Kitchen Blinds as One Entity #### 
+          
+      blinds:
+        friendly_name: "Blinds"
+        device_class: blind
+        optimistic: true
+        open_cover:
+          service: script.blinds
+          data:
+            modus: 'open'
+        close_cover:
+          service: script.blinds
+          data:
+            modus: 'close'
+        stop_cover:
+          service: script.blinds
+          data:
+            modus: 'stop'
+        value_template: "{{is_state('sensor.blinds', 'open')}}"
+        entity_id:
+          - cover.family_room_blind_one
+          - cover.family_room_blind_two
+          - cover.family_room_blind_three
+          - cover.family_room_blind_four
+          - cover.kitchen_blind_one
+          - cover.kitchen_blind_two
+          - cover.kitchen_blind_three
+          - cover.kitchen_blind_four

@@ -1,0 +1,269 @@
+
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret latitude
+  longitude: !secret longitude
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 195
+  # metric for Metric, imperial for Imperial
+  unit_system: imperial
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: America/Chicago
+  # Customization file
+  customize: !include customize.yaml
+# Show links to resources in log and frontend
+#introduction:
+
+# Enables the frontend
+frontend:
+  extra_html_url:
+    - /local/custom_ui/state-card-tiles.html
+  themes: !include_dir_merge_named themes/
+
+# Enables configuration UI
+config:
+
+cloud:
+  alexa:
+    filter:
+      include_entities:
+        - light.kitchen_table
+        - light.kitchen_sink
+        - light.kitchen_ceiling_light
+        - light.front_hallway
+        - light.hallway_strip
+        - light.wled_family_ceiling
+        - light.family_floor_lamp
+        - light.family_right_lamp
+        - light.family_left_lamp
+        - light.hogwarts
+        - light.desk_lightstrip
+        - light.desk_lamp
+        - light.bed_lamp
+        - light.alexs_lamp
+        - light.danas_lamp
+        - lock.front_door
+        - lock.back_door
+        - cover.garage_door
+        - cover.blinds
+        - switch.floor_fan
+        - switch.family_window_decorations
+        - switch.family_door_decorations
+        - switch.kitchen_window_decorations
+        - switch.christmas_tree
+        - switch.entry_decorations
+        - script.goodnight
+        - script.fan_light_toggle
+        - script.fan_high
+        - script.fan_medium
+        - script.fan_low
+        - script.fan_off
+        - script.tv_on
+        - script.tv_off
+        - script.tv_play
+        - script.tv_pause
+        - script.tv_mute
+        - script.tv_volume_up
+        - script.tv_volume_down
+    entity_config:
+      light.hallway_strip:
+        name: Hallway Lights
+      light.wled_family_ceiling:
+        name: Family Room Ceiling Lights
+      light.family_floor_lamp:
+        name: Floor Lamp
+      light.family_left_lamp:
+        name: Left Lamp
+      light.family_right_lamp:
+        name: Right Lamp
+
+ifttt:
+  key: !secret ifttt
+
+http:
+  # Secrets are defined in the file secrets.yaml
+  
+  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+   base_url: !secret base_url
+
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Discover some devices automatically
+discovery:
+
+mobile_app:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+weather:
+  - platform: darksky
+    api_key: !secret darksky
+    mode: daily
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+recorder:
+  purge_keep_days: 7
+
+# Enables a map showing the location of tracked devices
+map:
+
+# Track the sun
+sun:
+
+# Text to speech
+tts:
+  - platform: google_translate
+    service_name: google_say
+
+alexa_media:
+  accounts:
+    - email: !secret alexa_media_email
+      password: !secret alexa_media_password
+      url: "amazon.com"
+
+media_player:
+  - platform: spotify
+    client_id: !secret spotify_client_id
+    client_secret: !secret spotify_client_password
+
+  - platform: plex
+  
+  #- platform: roku
+
+  - platform: androidtv
+    name: Living Room Shield
+    device_class: androidtv
+    host: 192.168.1.138
+    adbkey: "/config/adbkey"
+
+  - platform: denonavr
+    host: 192.168.1.144
+    name: Family Room Receiver
+  
+  - platform: vizio
+    host: 192.168.1.156
+    access_token: !secret vizio_access_token
+  
+  - platform: webostv
+    host: 192.168.1.139
+    name: livingroom_tv
+    filename: webostv.conf
+    turn_on_action:
+      service: wake_on_lan.send_magic_packet
+      data:
+        "mac": !secret webostv_mac
+
+input_boolean:
+  goaling:
+    initial: off
+
+zha:
+  usb_path: /dev/ttyUSB1
+  database_path: /config/zigbee.db
+
+zwave:
+  usb_path: /dev/ttyUSB0
+  polling_interval: 30000
+  network_key: !secret z_wave_network_key
+
+stream:
+
+camera:
+  - platform: uvc
+    nvr: 192.168.1.38
+    key: !secret uvc_key
+    password: !secret uvc_password
+  - platform: ring
+  - platform: ffmpeg
+    input: !secret wyze_rtsp
+    name: Kitchen
+
+ecobee:
+  api_key: !secret ecobee_api_key
+
+ring:
+  username: !secret ring_username
+  password: !secret ring_password
+
+mqtt:
+  broker: 192.168.1.40
+  port: 1883
+  client_id: home-assistant-1
+  discovery: true
+  discovery_prefix: homeassistant
+  username: !secret mqtt_username
+  password: !secret mqtt_password
+  birth_message:
+    topic: "hass/status"
+    payload: "online"
+    qos: 0
+    retain: false
+
+notify:
+  - platform: nfandroidtv
+    name: Master Bedroom
+    host: 192.168.1.54
+  - platform: alexa_media
+    name: alexa_media
+  - platform: webostv
+    host: 192.168.1.139
+    name: livingroom_tv
+    filename: webostv.conf
+
+tplink:
+  discovery: false
+  switch:
+    - host: 192.168.1.48
+    - host: 192.168.1.49
+    - host: 192.168.1.94
+    - host: 192.168.1.108
+
+ecovacs:
+  username: !secret ecovacs_username
+  password: !secret ecovacs_password
+  country: us
+  continent: na
+
+hacs:
+  token: !secret hacs_token
+  appdaemon: true
+
+system_health:
+
+remote_homeassistant:
+  instances:
+  - host: http://192.168.1.137
+    port: 8123
+    api_password: !secret remote_homeassistant_api_password
+
+roku:
+  - host: 192.168.1.90
+  
+wake_on_lan:
+
+group: !include_dir_merge_named group
+automation: !include_dir_merge_list automation
+binary_sensor: !include binary_sensor.yaml
+cover: !include cover.yaml
+input_number: !include input_number.yaml
+sensor: !include_dir_merge_list sensor
+script: !include_dir_merge_named scripts/
+switch: !include switch.yaml
+scene: !include_dir_merge_list scene
+light: !include_dir_merge_list light
