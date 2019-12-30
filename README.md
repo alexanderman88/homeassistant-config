@@ -56,7 +56,7 @@ I am running Home Assistant Version __0.103.4__
 
 ### Dark
 
-![Main Dark](/dashboard/Main - Dark.png)
+![Main Dark](/dashboard/Main%20-%20Dark.png)
 
 ## Downstairs
 
@@ -102,7 +102,7 @@ I am running Home Assistant Version __0.103.4__
 
 ### Light
 
-![Bedrooms](/dashboard/ Bedrooms.png)
+![Bedrooms](/dashboard/Bedrooms.png)
 
 ### Dark
 
