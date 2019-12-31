@@ -46,6 +46,17 @@ I am running Home Assistant Version __0.103.4__
 * [Amazon Echo Dot](https://www.amazon.com/gp/product/B07PDHSLM6/)
 * [Amazon Echo Show 5](https://www.amazon.com/gp/product/B07HZLHPKP/)
 
+# Automation Highlights
+
+## NHL Goal Light
+Using the NHL's open API as automation triggers, I recreate the stadium feel with flashing lights and sounds for Blackhawks goals, oppenent goals, intermission, and game start.
+
+## Room Based Alexa Voice Control
+With the limited Harmony Hub integration into Amazon Alexa, these automations are able to see which echo device was last activated to determine which device should be changed.
+
+## Position Specific RF Controlled Blinds
+The available controls for the motorized blinds are up, down, and stop. The automations are able to store the blinds position and allow it to be set to certain position.
+
 # Dashboards
 
 ## Main
