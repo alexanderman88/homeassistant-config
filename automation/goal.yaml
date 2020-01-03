@@ -194,7 +194,7 @@
     entity_id: sensor.nhl_game_status
   condition:
   - condition: template
-    value_template: "{{(as_timestamp(states.sensor.nhl_next_game.attributes.teams[0].nextGameSchedule.dates[0].games[0].gameDate)|timestamp_custom('%I:%M %p')) == (((now().strftime('%s')|int)+(5*60))|timestamp_custom('%I:%M %p', false)) }}"
+    value_template: "{{(as_timestamp(states.sensor.nhl_next_game.attributes.teams[0].nextGameSchedule.dates[0].games[0].gameDate)|timestamp_custom('%D %I:%M %p')) == (((now().strftime('%s')|int)+(5*60))|timestamp_custom('%D %I:%M %p', false)) }}"
   action:
   - service: script.turn_on
     entity_id: script.game_start
