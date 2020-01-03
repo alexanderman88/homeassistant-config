@@ -189,7 +189,7 @@
 - alias: Blackhawks Game Start
   trigger:
   - platform: template
-    value_template: "{% if states.sensor.nhl_period.state == (now().strftime('%I:') + (now().minute+5) | string + now().strftime(' %p')) %}true{% endif %}"
+    value_template: '{% if states.sensor.nhl_period.state == (((now().strftime("%s")|int)+(5*60))|timestamp_custom("%I:%M %p", false)) %}true{% endif %}'
   condition:
   - condition: state
     entity_id: sensor.nhl_game_status
