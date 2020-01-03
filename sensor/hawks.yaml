@@ -1,0 +1,188 @@
+
+#### Checks Date of the Next Blackhawks Game ####
+
+- platform: rest
+  resource: https://statsapi.web.nhl.com/api/v1/teams/16/?expand=team.schedule.next
+  name: nhl_next_game
+  value_template: '{{ value_json.teams[0].nextGameSchedule.dates[0].date }}'
+  json_attributes:
+    - teams
+  scan_interval:
+    hours: 24
+
+#### Gets Current Game Status ####
+
+- platform: rest
+  resource: https://statsapi.web.nhl.com/api/v1/schedule?teamId=16&hydrate=linescore
+  name: nhl_game_status
+  scan_interval: 
+    hours: 24
+  value_template: >-
+    {% if value_json.totalGames == 0 %}
+      No Game
+    {% else %}
+      {{ value_json.dates[0].games[0].status.detailedState }}
+    {% endif %}
+  json_attributes:
+    - dates
+
+
+- platform: template
+  sensors:
+  
+#### AWAY SCORE ####
+
+    nhl_away_score:
+      value_template: >-
+        {% if states('sensor.nhl_game_status') == 'No Game' %}
+          {{ states.sensor.nhl_next_game.attributes.teams[0].nextGameSchedule.dates[0].games[0].teams.away.team.name}}
+        {% else %}
+          {{ states.sensor.nhl_game_status.attributes["dates"][0]["games"][0]["teams"]["away"]["score"] }}
+        {% endif %}
+      friendly_name_template: >-
+        {% if states('sensor.nhl_game_status') == 'No Game' %}
+          Away
+        {% else %}
+          {{ states.sensor.nhl_game_status.attributes["dates"][0]["games"][0]["teams"]["away"]["team"]["name"] }}
+        {% endif %}
+      entity_picture_template: >-
+        {% if states('sensor.nhl_game_status') == 'No Game' %}
+          https://www-league.nhlstatic.com/images/logos/teams-current-primary-light/{{ states.sensor.nhl_next_game.attributes.teams[0].nextGameSchedule.dates[0]["games"][0]["teams"]["away"]["team"]["id"] | int }}.svg
+        {% else  %}
+          https://www-league.nhlstatic.com/images/logos/teams-current-primary-light/{{ states.sensor.nhl_game_status.attributes.dates[0]["games"][0]["teams"]["away"]["team"]["id"] | int }}.svg
+        {% endif %}
+      entity_id: sensor.nhl_game_status
+
+#### HOME SCORE ####
+    nhl_home_score:
+      value_template: >-
+        {% if states('sensor.nhl_game_status') == 'No Game' %}
+          {{ states.sensor.nhl_next_game.attributes.teams[0].nextGameSchedule.dates[0].games[0].teams.home.team.name}}
+        {% else %}
+          {{ states.sensor.nhl_game_status.attributes.dates[0]["games"][0]["teams"]["home"]["score"] }}
+        {% endif %}
+      friendly_name_template: >-
+        {% if states('sensor.nhl_game_status') == 'No Game' %}
+          Home
+        {% else %}
+          {{ states.sensor.nhl_game_status.attributes.dates[0]["games"][0]["teams"]["home"]["team"]["name"] }}
+        {% endif %}
+      entity_picture_template: >-
+        {% if states('sensor.nhl_game_status') == 'No Game' %}
+           https://www-league.nhlstatic.com/images/logos/teams-current-primary-light/{{ states.sensor.nhl_next_game.attributes.teams[0].nextGameSchedule.dates[0]["games"][0]["teams"]["home"]["team"]["id"] | int }}.svg
+        {% else  %}
+          https://www-league.nhlstatic.com/images/logos/teams-current-primary-light/{{ states.sensor.nhl_game_status.attributes.dates[0]["games"][0]["teams"]["home"]["team"]["id"] | int }}.svg
+        {% endif %}
+      entity_id: sensor.nhl_game_status
+
+#### PERIOD (OR INTERMISSION) as NAME /// Sch Start Time, Period Remaining or Intermission Remaining as STATE ####
+    nhl_period:
+      friendly_name_template: >-
+        {% if states('sensor.nhl_game_status') == 'No Game' %}
+          {{ as_timestamp(states.sensor.nhl_next_game.attributes.teams[0].nextGameSchedule.dates[0]["games"][0]["gameDate"]) | timestamp_custom("%a %m/%d") }}
+        {% elif states.sensor.nhl_game_status.attributes["dates"][0]["games"][0]["status"]["detailedState"] == 'Game Over' %}
+          {{ states.sensor.nhl_game_status.attributes["dates"][0]["games"][0]["status"]["detailedState"] }}
+        {% elif states.sensor.nhl_game_status.attributes["dates"][0]["games"][0]["status"]["detailedState"] == 'Pre-Game' %}
+          {{ states.sensor.nhl_game_status.attributes["dates"][0]["games"][0]["status"]["detailedState"] }}
+        {% elif states.sensor.nhl_game_status.attributes["dates"][0]["games"][0]["status"]["detailedState"] == 'Scheduled' %}
+          {{ states.sensor.nhl_game_status.attributes["dates"][0]["games"][0]["status"]["detailedState"] }}
+        {% elif states.sensor.nhl_game_status.attributes["dates"][0]["games"][0]["linescore"]["currentPeriodTimeRemaining"] == 'END' %}
+          {{ states.sensor.nhl_game_status.attributes["dates"][0]["games"][0]["linescore"]["currentPeriodOrdinal"] }} INT
+        {% elif states.sensor.nhl_game_status.attributes["dates"][0]["games"][0]["linescore"]["currentPeriodTimeRemaining"] != 'END' %}
+          {{ states.sensor.nhl_game_status.attributes["dates"][0]["games"][0]["linescore"]["currentPeriodOrdinal"] }}
+        {% else %}
+          Period
+        {% endif %}
+      value_template: >-
+        {% if states('sensor.nhl_game_status') == 'No Game' %}
+          {{ as_timestamp(states.sensor.nhl_next_game.attributes.teams[0].nextGameSchedule.dates[0]["games"][0]["gameDate"]) | timestamp_custom("%I:%M %p") }}
+        {% elif states.sensor.nhl_game_status.attributes["dates"][0]["games"][0]["status"]["detailedState"] == 'Game Over' %}
+          {{ states.sensor.nhl_game_status.attributes["dates"][0]["games"][0]["status"]["detailedState"] }}
+        {% elif states.sensor.nhl_game_status.attributes["dates"][0]["games"][0]["status"]["detailedState"] == 'Pre-Game' %}
+          {{ as_timestamp(states.sensor.nhl_game_status.attributes["dates"][0]["games"][0]["gameDate"]) | timestamp_custom('%I:%M %p') }}
+        {% elif states.sensor.nhl_game_status.attributes["dates"][0]["games"][0]["status"]["detailedState"] == 'Scheduled' %}
+          {{ as_timestamp(states.sensor.nhl_game_status.attributes["dates"][0]["games"][0]["gameDate"]) | timestamp_custom('%I:%M %p') }}
+        {% elif states.sensor.nhl_game_status.attributes["dates"][0]["games"][0]["linescore"]["intermissionInfo"]["inIntermission"] == true %}
+          {{ states.sensor.nhl_game_status.attributes["dates"][0]["games"][0]["linescore"]["intermissionInfo"]["intermissionTimeRemaining"] | timestamp_custom("%M:%S", 0) }}
+        {% else %}
+          {{ states.sensor.nhl_game_status.attributes["dates"][0]["games"][0]["linescore"]["currentPeriodTimeRemaining"] }}
+        {% endif %}
+
+#### POWERPLAY STATUS (display powerPlayStrength as status, template the friendly name with team on PP) ####
+    nhl_powerplay_status:
+      value_template: >-
+        {% if states('sensor.nhl_game_status') == 'No Game' %}
+          No Game
+        {% elif states.sensor.nhl_game_status.attributes["dates"][0]["games"][0]["status"]["detailedState"] == 'Game Over' %}
+          {{ states.sensor.nhl_game_status.attributes["dates"][0]["games"][0]["status"]["detailedState"] }}
+        {% elif states.sensor.nhl_game_status.attributes["dates"][0]["games"][0]["status"]["detailedState"] == 'Pre-Game' %}
+          {{ states.sensor.nhl_game_status.attributes["dates"][0]["games"][0]["status"]["detailedState"] }}
+        {% elif states.sensor.nhl_game_status.attributes["dates"][0]["games"][0]["status"]["detailedState"] == 'Scheduled' %}
+          {{ states.sensor.nhl_game_status.attributes["dates"][0]["games"][0]["status"]["detailedState"] }}
+        {% else %}
+          {{ states.sensor.nhl_game_status.attributes["dates"][0]["games"][0]["linescore"]["powerPlayStrength"] }}
+        {% endif %}
+      friendly_name_template: >-
+        {% if states.sensor.nhl_game_status.attributes["dates"][0]["games"][0]["linescore"]["teams"]["home"]["powerPlay"] == true %}
+          Powerplay - {{ states.sensor.nhl_game_status.attributes["dates"][0]["games"][0]["teams"]["home"]["team"]["name"] }}
+        {% elif states.sensor.nhl_game_status.attributes["dates"][0]["games"][0]["linescore"]["teams"]["away"]["powerPlay"] == true %}
+          Powerplay - {{ states.sensor.nhl_game_status.attributes["dates"][0]["games"][0]["teams"]["away"]["team"]["name"] }}
+        {% else %}
+          Powerplay Status
+        {% endif %}
+
+#### HOME SHOTS ####
+    nhl_home_shots:
+      value_template: >-
+        {% if states('sensor.nhl_game_status') == 'No Game' %}
+          No Game
+        {% else %}
+          {{ states.sensor.nhl_game_status.attributes.dates[0]["games"][0]["linescore"]["teams"]["home"]["shotsOnGoal"] }}
+        {% endif %}
+      friendly_name_template: >-
+        {% if states('sensor.nhl_game_status') == 'No Game' %}
+          Shots - Home
+        {% else %}
+          Shots - {{ states.sensor.nhl_game_status.attributes.dates[0]["games"][0]["teams"]["home"]["team"]["name"] }}
+        {% endif %}
+      entity_id: sensor.nhl_game_status
+
+#### AWAY SHOTS ####
+    nhl_away_shots:
+      value_template: >-
+        {% if states('sensor.nhl_game_status') == 'No Game' %}
+          No Game
+        {% else %}
+          {{ states.sensor.nhl_game_status.attributes["dates"][0]["games"][0]["linescore"]["teams"]["away"]["shotsOnGoal"] }}
+        {% endif %}
+      friendly_name_template: >-
+        {% if states('sensor.nhl_game_status') == 'No Game' %}
+          Shots - Away
+        {% else %}
+          Shots - {{ states.sensor.nhl_game_status.attributes["dates"][0]["games"][0]["teams"]["away"]["team"]["name"] }}
+        {% endif %}
+      entity_id: sensor.nhl_game_status
+
+#### Empty Net ####
+    nhl_goalie_pulled:
+      value_template: >-
+        {% if states('sensor.nhl_game_status') == 'No Game' %}
+          Not Empty
+        {% elif states.sensor.nhl_game_status.attributes.dates[0]["games"][0]["linescore"]["teams"]["home"]["goaliePulled"]  == True %}
+          {{ states.sensor.nhl_game_status.attributes["dates"][0]["games"][0]["teams"]["home"]["team"]["name"] }}
+        {% elif states.sensor.nhl_game_status.attributes.dates[0]["games"][0]["linescore"]["teams"]["away"]["goaliePulled"]  == True %}
+          {{ states.sensor.nhl_game_status.attributes["dates"][0]["games"][0]["teams"]["away"]["team"]["name"] }}
+        {% else %}
+          Not Empty
+        {% endif %}
+      friendly_name_template: >-
+        {% if states('sensor.nhl_game_status') == 'No Game' %}
+          Not Empty
+        {% elif states.sensor.nhl_game_status.attributes.dates[0]["games"][0]["linescore"]["teams"]["home"]["goaliePulled"]  == True %}
+          Empty Net
+        {% elif states.sensor.nhl_game_status.attributes.dates[0]["games"][0]["linescore"]["teams"]["away"]["goaliePulled"]  == True %}
+          Empty Net
+        {% else %}
+          Not Empty
+        {% endif %}
+      entity_id: sensor.nhl_game_status

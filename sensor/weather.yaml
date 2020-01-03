@@ -1,0 +1,21 @@
+- platform: yr
+
+- platform: darksky
+  api_key: 9dff6787be0ab4ac641b86ab85b11156
+  monitored_conditions:
+    - summary
+    - icon
+    - precip_probability
+    - precip_type
+    - precip_intensity
+    - temperature
+    - apparent_temperature
+    - hourly_summary
+    - daily_summary
+    - humidity
+  
+- platform: time_date
+  display_options:
+    - 'time_date'
+
+- platform: moon

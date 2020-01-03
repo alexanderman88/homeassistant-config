@@ -1,0 +1,52 @@
+
+#### Group Blinds State ####
+
+- platform: template
+  sensors:
+      family_room_blinds:
+        value_template: >-
+          {% if is_state('cover.family_room_blind_one', 'open') %}
+            open
+          {% elif is_state('cover.family_room_blind_two', 'open') %}
+            open
+          {% elif is_state('cover.family_room_blind_three', 'open') %}
+            open
+          {% elif is_state('cover.family_room_blind_four', 'open') %}
+            open
+          {% else %}
+            closed
+          {% endif %}
+      kitchen_blinds:
+        value_template: >-
+          {% if is_state('cover.kitchen_blind_one', 'open') %}
+            open
+          {% elif is_state('cover.kitchen_blind_two', 'open') %}
+            open
+          {% elif is_state('cover.kitchen_blind_three', 'open') %}
+            open
+          {% elif is_state('cover.kitchen_blind_four', 'open') %}
+            open
+          {% else %}
+            closed
+          {% endif %}
+      blinds:
+        value_template: >-
+          {% if is_state('cover.family_room_blind_one', 'open') %}
+            open
+          {% elif is_state('cover.family_room_blind_two', 'open') %}
+            open
+          {% elif is_state('cover.family_room_blind_three', 'open') %}
+            open
+          {% elif is_state('cover.family_room_blind_four', 'open') %}
+            open
+          {% elif is_state('cover.kitchen_blind_one', 'open') %}
+            open
+          {% elif is_state('cover.kitchen_blind_two', 'open') %}
+            open
+          {% elif is_state('cover.kitchen_blind_three', 'open') %}
+            open
+          {% elif is_state('cover.kitchen_blind_four', 'open') %}
+            open
+          {% else %}
+            closed
+          {% endif %}

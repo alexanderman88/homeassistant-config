@@ -1,0 +1,20 @@
+
+#### Checks Which Echo Was Last Activated for Room Based Controls ####
+
+- platform: template
+  sensors:
+    last_alexa:
+      entity_id:
+        - media_player.alex_s_2nd_echo
+        - media_player.alex_s_echo
+        - media_player.alex_s_echo_show
+        - media_player.bathroom_echo_dot
+        - media_player.bedroom_echo_dot_2
+        - media_player.desk_echo_dot
+        - media_player.family_room_echo_dot_2
+        - media_player.guest_bathroom_echo_dot
+        - media_player.guest_bedroom_echo_dot
+        - media_player.gym_echo_dot
+        - media_player.second_bedroom_echo_dot
+      value_template: >
+        {{ states.media_player | selectattr('attributes.last_called','eq',True) | map(attribute='entity_id') | first }}

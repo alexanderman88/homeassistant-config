@@ -1,0 +1,22 @@
+
+#### Laundry State Sensors Based on Current ####
+
+- platform: template
+  sensors:
+    washing_machine_status:
+      value_template: >-
+        {% if states('sensor.washing_machine_current')|float > 0.5 %}
+          Running
+        {% else %}
+          Not Running
+        {% endif %}
+      friendly_name: "Washing Machine Status"
+      
+    dryer_status:
+      value_template: >-
+        {% if states('sensor.drying_machine_current')|float > 0.5 %}
+          Running
+        {% else %}
+          Not Running
+        {% endif %}
+      friendly_name: "Dryer Status"

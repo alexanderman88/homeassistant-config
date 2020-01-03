@@ -1,0 +1,11 @@
+- platform: plex
+  host: 192.168.1.40
+  token: !secret plex_token
+
+- platform: plex_recently_added
+  token: !secret plex_token
+  host: 192.168.1.40
+  port: 32400
+  section_types:
+    - movie
+  

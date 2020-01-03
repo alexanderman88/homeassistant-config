@@ -15,12 +15,14 @@
 
 # Include folders
 !automation
+!dashboard
 !group
 !light
 !scene
 !scripts
+!sensor
 !themes
-!dashboard
+
 
 # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
 ip_bans.yaml

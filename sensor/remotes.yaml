@@ -1,0 +1,8 @@
+
+#### Current Family Room Harmony Hub Activity ####
+
+- platform: template
+  sensors:
+    xfinity_on:
+      friendly_name: "Xfinity On"
+      value_template: '{{ states.remote.family_room.attributes.current_activity }}'
