@@ -29,6 +29,10 @@ cloud:
   alexa:
     filter:
       include_entities:
+        - camera.family_room
+        - camera.kitchen
+        - cover.garage_door
+        - cover.blinds
         - light.kitchen_table
         - light.kitchen_sink
         - light.kitchen_ceiling_light
@@ -46,14 +50,6 @@ cloud:
         - light.danas_lamp
         - lock.front_door
         - lock.back_door
-        - cover.garage_door
-        - cover.blinds
-        - switch.floor_fan
-        - switch.family_window_decorations
-        - switch.family_door_decorations
-        - switch.kitchen_window_decorations
-        - switch.christmas_tree
-        - switch.entry_decorations
         - script.goodnight
         - script.fan_light_toggle
         - script.fan_high
@@ -67,7 +63,17 @@ cloud:
         - script.tv_mute
         - script.tv_volume_up
         - script.tv_volume_down
+        - script.family_room_xfinity
+        - script.blackhawks_on
+        - switch.floor_fan
+        - switch.family_window_decorations
+        - switch.family_door_decorations
+        - switch.kitchen_window_decorations
+        - switch.christmas_tree
+        - switch.entry_decorations
     entity_config:
+      cover.blinds:
+        display_categories: INTERIOR_BLIND
       light.hallway_strip:
         name: Hallway Lights
       light.wled_family_ceiling:

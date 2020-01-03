@@ -26,6 +26,29 @@
   json_attributes:
     - dates
 
+- platform: rest
+  resource: https://statsapi.web.nhl.com/api/v1/schedule?teamId=16&expand=schedule.broadcasts
+  name: blackhawks_channel
+  value_template: >-
+    {% if value_json.totalGames == 0 %}
+      No Game
+    {% else %}
+      {% for broadcast in value_json.dates[0].games[0].broadcasts %}
+        {% if broadcast.type == "national" and broadcast.name == "NBCSCH" %}
+          {{ broadcast.name }}
+        {% elif broadcast.type == "national" and broadcast.name == "NBC" %}
+          {{ broadcast.name }}
+        {% elif value_json.dates[0].games[0].teams["home"].team.name == "Chicago Blackhawks" and broadcast.type == "home" %}
+          {{ broadcast.name }}
+        {% elif value_json.dates[0].games[0].teams["away"].team.name == "Chicago Blackhawks" and broadcast.type == "away" %}
+          {{ broadcast.name }}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  json_attributes:
+    - dates
+  scan_interval:
+    hours: 24
 
 - platform: template
   sensors:

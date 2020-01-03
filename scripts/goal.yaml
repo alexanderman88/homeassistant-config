@@ -15,7 +15,7 @@ goal_start:
         - light.alexs_lamp
         - light.danas_lamp
         - light.kitchen_sink
-        - light.kitchen_ceiling
+        - light.kitchen_ceiling_light
         - light.kitchen_table
         - light.front_hallway
         - group.decorations
@@ -167,7 +167,7 @@ game_start:
         - light.alexs_lamp
         - light.danas_lamp
         - light.kitchen_sink
-        - light.kitchen_ceiling
+        - light.kitchen_ceiling_light
         - light.kitchen_table
         - light.front_hallway
         - group.decorations

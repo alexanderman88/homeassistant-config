@@ -41,7 +41,7 @@
       - light.alexs_lamp
       - light.danas_lamp
       - light.kitchen_sink
-      - light.kitchen_ceiling
+      - light.kitchen_ceiling_light
       - light.kitchen_table
       - light.front_hallway
       - group.decorations
@@ -66,6 +66,8 @@
     entity_id: script.nhl_update 
   - service: homeassistant.update_entity
     entity_id: sensor.nhl_next_game
+  - service: homeassistant.update_entity
+    entity_id: sensor.blackhawks_channel
 
 #### Updates Status Every 10 Minutes On Game Day ####
   
@@ -170,7 +172,7 @@
       - light.alexs_lamp
       - light.danas_lamp
       - light.kitchen_sink
-      - light.kitchen_ceiling
+      - light.kitchen_ceiling_light
       - light.kitchen_table
       - light.front_hallway
       - group.decorations
@@ -188,12 +190,11 @@
 
 - alias: Blackhawks Game Start
   trigger:
-  - platform: template
-    value_template: '{% if states.sensor.nhl_period.state == (((now().strftime("%s")|int)+(5*60))|timestamp_custom("%I:%M %p", false)) %}true{% endif %}'
-  condition:
-  - condition: state
+  - platform: state
     entity_id: sensor.nhl_game_status
-    state: 'Pre-Game'
+  condition:
+  - condition: template
+    value_template: "{{(as_timestamp(states.sensor.nhl_next_game.attributes.teams[0].nextGameSchedule.dates[0].games[0].gameDate)|timestamp_custom('%I:%M %p')) == (((now().strftime('%s')|int)+(5*60))|timestamp_custom('%I:%M %p', false)) }}"
   action:
   - service: script.turn_on
     entity_id: script.game_start

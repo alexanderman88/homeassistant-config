@@ -27,7 +27,7 @@ family_room_tv_mute:
 
 family_room_tv_roku:
   sequence:
-    service: remote.send_command
+    service: remote.turn_on
     data:
       entity_id: remote.family_room
       activity: 'Watch TV'

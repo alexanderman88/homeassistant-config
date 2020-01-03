@@ -95,3 +95,19 @@ tv_volume_down:
                   is_state("sensor.last_alexa", "media_player.bedroom_echo_dot_2") %}
             script.family_room_tv_volume_down
           {% endif %}
+
+blackhawks_on:
+  sequence:
+    - service: script.turn_on
+      entity_id: script.family_room_xfinity
+    - delay: 10
+    - service: harmony.change_channel
+      data_template:
+        entity_id: remote.family_room
+        channel: >
+          {% if is_state("sensor.blackhawks_channel", "NBCSCH") %}200
+          {% elif is_state("sensor.blackhawks_channel", "NBC") %}5
+          {% elif is_state("sensor.blackhawks_channel", "NBCSN") %}174
+          {% elif is_state("sensor.blackhawks_channel", "NBCSCH+") %}201
+          {% endif %}
+
