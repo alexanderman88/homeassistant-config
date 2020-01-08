@@ -44,7 +44,7 @@
       - light.kitchen_ceiling_light
       - light.kitchen_table
       - light.front_hallway
-      - group.decorations
+      #- group.decorations
   - service: light.turn_on
     data:
       entity_id: light.wled_family_ceiling
@@ -175,7 +175,7 @@
       - light.kitchen_ceiling_light
       - light.kitchen_table
       - light.front_hallway
-      - group.decorations
+      #- group.decorations
   - service: light.turn_on
     data:
       entity_id: light.wled_family_ceiling
@@ -190,8 +190,8 @@
 
 - alias: Blackhawks Game Start
   trigger:
-  - platform: state
-    entity_id: sensor.nhl_game_status
+  - platform: time_pattern
+    seconds: '/60'
   condition:
   - condition: template
     value_template: "{{(as_timestamp(states.sensor.nhl_next_game.attributes.teams[0].nextGameSchedule.dates[0].games[0].gameDate)|timestamp_custom('%D %I:%M %p')) == (((now().strftime('%s')|int)+(5*60))|timestamp_custom('%D %I:%M %p', false)) }}"

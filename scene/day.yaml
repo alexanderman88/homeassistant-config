@@ -1,0 +1,35 @@
+- name: Day
+  entities:
+    
+    # Family Room Lights
+    light.family_right_lamp:
+      state: on
+      brightness: 255
+      color_temp: 153
+    light.family_left_lamp:
+      state: on
+      brightness: 255
+      color_temp: 153
+    light.family_floor_lamp:
+      state: on
+      brightness: 255
+      color_temp: 153
+    light.wled_family_ceiling:
+      state: on
+      rgb_color: [255, 255, 255]
+      brightness: 255
+      effect: '[FX=00] Solid'
+
+    # Kitchen Lights
+    light.kitchen_sink:
+      state: on
+    light.kitchen_table:
+      state: on
+      brightness: 175
+    light.kitchen_ceiling_light:
+      state: on
+      brightness: 175
+    
+    # Blinds
+    cover.blinds:
+      state: open

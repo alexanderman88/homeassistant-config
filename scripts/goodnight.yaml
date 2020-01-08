@@ -36,5 +36,5 @@ goodnight:
         entity_id: light.danas_lamp
         transition: 1800
     - service: alarm_control_panel.alarm_arm_home
-    - service: homeassistant.turn_off
-      entity_id: group.decorations
+    #- service: homeassistant.turn_off
+    #  entity_id: group.decorations

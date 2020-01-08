@@ -12,6 +12,7 @@ clear_dark:
   background-color: '#3b4049'                                                     # Dark grey background
   background-color-2: '#484E59'                                                   # Light grey background
   background-card-color: 'rgba(67,73,82,0.5)'                                     # Grey background
+  background-card-clear: 'rgba(67,73,82,0.2)'                                     # Clear background
   border-color: '#383C46'                                                         # Grey border
   off-color: 'var(--text-dark-color)'                                             # Icon Off Color
 
@@ -19,11 +20,13 @@ clear_dark:
   primary-color: 'rgba(124,127,135,0.5)'                                             # Background
   #cch-all-buttons-color: 'var(--text-color)'                                     # Text
   
+
   # Left Menu
-  paper-listbox-background-color: 'var(--background-color)'                       # Background
+  paper-listbox-background-color: 'var(--background-image)'                       # Background
+  sidebar-background-color: 'var(--background-color)' 
   sidebar-icon-color: 'var(--text-medium-color)'                                  # icons
-  sidebar-selected-icon-color: 'var(--text-medium-light-color)'                   # Selected row icon and background (15%)
-  sidebar-selected-text-color: 'var(--text-color)'                                # Selected row label
+  #sidebar-selected-icon-color: 'var(--text-medium-light-color)'                   # Selected row icon and background (15%)
+  #sidebar-selected-text-color: 'var(--text-color)'                                # Selected row label
 
   # UI
   paper-card-header-color: 'var(--text-color)'                                    # Title in settings
@@ -39,9 +42,14 @@ clear_dark:
   secondary-text-color: 'var(--text-medium-color)'
   disabled-text-color: 'var(--text-dark-color)'
   paper-dialog-button-color: 'var(--text-color)'
-  secondary-background-color: 'var(--background-color-2)'                         # Background more info title
+  secondary-background-color: 'var(--background-card-color)'                         # Background more info title
   ha-card-border-radius: '10px'
-  ha-card-background: 'rgba(67,73,82,0.5)'
+  ha-card-background: 'var(--background-card-color)'
+  
+  paper-dialog-background-color: 'var(--background-image)'
+  paper-dialog-header-background: 'var(--background-card-color)'
+  more-info-header-background: 'var(--background-card-color)'
+  
   
   # Icons
   paper-item-icon-color: 'var(--off-color)'                                       # Off

@@ -19,6 +19,8 @@ clear:
   
   # Left Menu
   paper-listbox-background-color: 'var(--background-color)'                       # Background
+  sidebar-background-color: 'var(--background-color)' 
+  sidebar-icon-color: 'var(--text-medium-color)'    
 
   # UI
   paper-card-header-color: 'var(--text-color)'                                    # Title in settings
@@ -36,6 +38,10 @@ clear:
   secondary-background-color: 'var(--background-color-2)'                         # Background more info title
   ha-card-border-radius: '10px'
   ha-card-background: 'rgba(255,255,255,0.5)'
+
+  paper-dialog-background-color: 'var(--background-image)'
+  paper-dialog-header-background: 'var(--background-card-color)'
+  more-info-header-background: 'var(--background-card-color)'
 
   # Icons
   paper-item-icon-color: 'var(--off-color)'                                       # Off

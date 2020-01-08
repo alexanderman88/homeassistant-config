@@ -1,0 +1,27 @@
+- alias: 'Tablet Motion On'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.wall_tablet
+    to: 'on'
+  action:
+  - service: light.turn_on
+    data_template:
+      entity_id: light.wall_tablet
+      brightness: >
+        {% if state_attr("sun.sun", "elevation") < 3.5 %}
+          75
+        {% else %}
+          200
+        {% endif %}
+
+- alias: 'Tablet Motion Off'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.wall_tablet
+    to: 'off'
+    for: "00:00:15"
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: light.wall_tablet
+      brightness: 1

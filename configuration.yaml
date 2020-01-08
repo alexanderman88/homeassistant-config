@@ -199,6 +199,9 @@ camera:
   - platform: ffmpeg
     input: !secret wyze_rtsp
     name: Kitchen
+  - name: Tablet
+    platform: generic
+    still_image_url: http://192.168.1.105:2323/?cmd=getCamshot&password=dashboard
 
 ecobee:
   api_key: !secret ecobee_api_key
@@ -262,6 +265,55 @@ roku:
   - host: 192.168.1.90
   
 wake_on_lan:
+
+browser_mod:
+  devices:
+    ed9e3c61_ac1ed82a:
+      name: wall_tablet
+      camera: true
+  disable:
+    - all
+
+emulated_hue:
+  host_ip: 192.168.1.40
+  expose_by_default: false
+  entities:
+    light.wled_family_ceiling:
+      name: "Family Room Ceiling"
+      hidden: false
+    light.family_left_lamp:
+      name: "Left Lamp"
+      hidden: false
+    light.family_right_lamp:
+      name: "Right Lamp"
+      hidden: false
+    light.family_floor_lamp:
+      name: "Floor Lamp"
+      hidden: false
+    light.front_hallway:
+      hidden: false
+    light.hallway_strip:
+      name: "Hallway Light"
+      hidden: false
+    light.kitchen_ceiling_light:
+      hidden: false
+    light.kitchen_sink:
+      hidden: false
+    light.kitchen_table:
+      hidden: false
+    light.alexs_lamp:
+      hidden: false
+    light.danas_lamp:
+      hidden: false
+    light.bed_lamp:
+      hidden: false
+    light.desk_lamp:
+      hidden: false
+    light.desk_lightstrip:
+      hidden: false
+    cover.blinds:
+      hidden: false
+      
 
 group: !include_dir_merge_named group
 automation: !include_dir_merge_list automation

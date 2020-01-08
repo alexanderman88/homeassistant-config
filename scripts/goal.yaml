@@ -18,7 +18,7 @@ goal_start:
         - light.kitchen_ceiling_light
         - light.kitchen_table
         - light.front_hallway
-        - group.decorations
+        #- group.decorations
     - service: script.turn_on
       entity_id: script.goal_repeat
     - service: media_player.play_media
@@ -85,8 +85,8 @@ goal_loop:
           rgb_color: [255, 0, 0]
           brightness: 255
           transition: 0.25
-      - service: homeassistant.turn_on
-        entity_id: group.decorations
+      #- service: homeassistant.turn_on
+      #  entity_id: group.decorations
       - delay:
           seconds: 0.25
       - condition: state
@@ -122,8 +122,8 @@ goal_loop:
         data:
           entity_id: light.bed_lamp
           transition: 0.25
-      - service: homeassistant.turn_off
-        entity_id: group.decorations
+      #- service: homeassistant.turn_off
+      #  entity_id: group.decorations
       - delay:
           seconds: 0.25
       - alias: loop
@@ -170,7 +170,7 @@ game_start:
         - light.kitchen_ceiling_light
         - light.kitchen_table
         - light.front_hallway
-        - group.decorations
+        #- group.decorations
     - service: script.turn_on
       entity_id: script.goal_repeat
     - service: media_player.play_media
