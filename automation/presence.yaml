@@ -3,7 +3,7 @@
 - alias: 'Alex and Dana Away'
   trigger:
     - platform: template
-      value_template: "{% if (is_state('device_tracker.alexs_phone','not_home')) and (is_state('device_tracker.danas_phone','not_home')) %}true{% endif %}"
+      value_template: "{% if (is_state('device_tracker.life360_alex','not_home')) and (is_state('device_tracker.life360_dana','not_home')) %}true{% endif %}"
   action:
     - service: alarm_control_panel.alarm_arm_away
       entity_id: alarm_control_panel.ring_alarm
@@ -41,10 +41,10 @@
 - alias: 'Alex or Dana Home'
   trigger:
     - platform: state
-      entity_id: device_tracker.alexs_phone
+      entity_id: device_tracker.life360_alex
       to: 'home'
     - platform: state
-      entity_id: device_tracker.danas_phone
+      entity_id: device_tracker.life360_dana
       to: 'home'
   action:
     #- service: alarm_control_panel.alarm_disarm

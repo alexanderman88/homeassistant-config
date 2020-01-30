@@ -205,7 +205,7 @@
   trigger:
   - platform: state
     entity_id: sensor.nhl_game_status
-    to: 'Final'
+    to: 'Game Over'
   condition:
   - condition: template
     value_template: >

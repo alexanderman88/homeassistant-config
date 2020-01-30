@@ -66,11 +66,7 @@ cloud:
         - script.family_room_xfinity
         - script.blackhawks_on
         - switch.floor_fan
-        - switch.family_window_decorations
-        - switch.family_door_decorations
-        - switch.kitchen_window_decorations
-        - switch.christmas_tree
-        - switch.entry_decorations
+        - switch.fireplace
     entity_config:
       cover.blinds:
         display_categories: INTERIOR_BLIND

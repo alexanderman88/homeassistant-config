@@ -25,3 +25,23 @@
     data:
       entity_id: light.wall_tablet
       brightness: 1
+
+- alias: 'Start Charging'
+  trigger:
+    platform: numeric_state
+    entity_id: binary_sensor.wall_tablet
+    value_template: "{{ state.attributes.battery_level }}"
+    below: 20
+  action:
+  - service: switch.turn_on
+    entity_id: switch.kitchen_window_decorations
+
+- alias: 'Stop Charging'
+  trigger:
+    platform: numeric_state
+    entity_id: binary_sensor.wall_tablet
+    value_template: "{{ state.attributes.battery_level }}"
+    above: 80
+  action:
+  - service: switch.turn_off
+    entity_id: switch.kitchen_window_decorations
