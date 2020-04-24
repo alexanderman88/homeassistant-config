@@ -98,3 +98,6 @@ light.family_left_lamp:
   icon: mdi:lamp
 light.family_right_lamp:
   icon: mdi:lamp
+light.family_room_lights:
+  optimistic: 'true'
+light.wled_family_ceiling: {}

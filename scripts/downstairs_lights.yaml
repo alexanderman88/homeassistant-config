@@ -10,6 +10,8 @@ downstairs_lights_off:
     - service: light.turn_off
       entity_id: light.wled_family_ceiling
     - service: light.turn_off
+      entity_id: light.tv_lightstrip
+    - service: light.turn_off
       entity_id: light.hallway_strip
     - service: light.turn_off
       entity_id: light.front_hallway

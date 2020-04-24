@@ -17,9 +17,9 @@
           type: announce
           method: all
         message: 'The Garage Door is Still Open'
-    - service: notify.mobile_app_alex_s_phone
+    - service: notify.mobile_app_sm_g988u
       data:
         message: 'The Garage Door is Still Open'
-    - service: notify.mobile_app_dana_s_phone
+    - service: notify.mobile_app_sm_g975u
       data:
         message: 'The Garage Door is Still Open'

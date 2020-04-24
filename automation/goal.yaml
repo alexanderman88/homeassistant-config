@@ -34,6 +34,7 @@
       - light.family_right_lamp
       - light.family_left_lamp
       - light.family_floor_lamp
+      - light.tv_lightstrip
       - light.hallway_strip
       - light.desk_lamp
       - light.desk_lightstrip
@@ -165,6 +166,7 @@
       - light.family_right_lamp
       - light.family_left_lamp
       - light.family_floor_lamp
+      - light.tv_lightstrip
       - light.hallway_strip
       - light.desk_lamp
       - light.desk_lightstrip

@@ -20,11 +20,9 @@
 - alias: 'Washer Done'
   trigger:
     platform: state
-    entity_id: sensor.washing_machine_status
+    entity_id: input_select.washing_machine_status
     to: 'Not Running'
     from: 'Running'
-    for:
-      minutes: 7
   action:
     - service: notify.alexa_media
       data:
@@ -34,3 +32,54 @@
           type: announce
           method: all
         message: "The Washer is Done."
+
+#### Sets State of Washing Machine with Cycles ####
+
+- alias: 'Set Washer to Sensing'
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.washing_machine_current
+      above: 0.5
+  condition:
+    - condition: state
+      entity_id: input_select.washing_machine_status
+      state: Not Running
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.washing_machine_status
+        option: Sensing
+
+- alias: 'Set Washer to Running'
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.washing_machine_current
+      above: 2.5
+      for:
+        minutes: 10
+  condition:
+    - condition: state
+      entity_id: input_select.washing_machine_status
+      state: Sensing
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.washing_machine_status
+        option: Running
+
+- alias: 'Set Washer to Not Running'
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.washing_machine_current
+      below: 0.2
+      for:
+        minutes: 3
+  condition:
+    - condition: state
+      entity_id: input_select.washing_machine_status
+      state: Running
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.washing_machine_status
+        option: Not Running

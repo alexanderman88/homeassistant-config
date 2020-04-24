@@ -1,0 +1,32 @@
+# Official Tautulli
+- platform: tautulli
+  host: 192.168.1.40
+  api_key: !secret tautulli_api
+      
+# Tautulli sensors
+- platform: template
+  sensors:
+    tautulli_count_total:
+      friendly_name: 'Total streams'
+      value_template: '{{ states.sensor.tautulli.attributes["stream_count"] }}'    
+    tautulli_count_transcode:
+      friendly_name: 'Transcoded streams'
+      value_template: '{{ states.sensor.tautulli.attributes["stream_count_transcode"] }}'
+    tautulli_direct_plays:
+      friendly_name: 'Direct Plays'
+      value_template: '{{ states.sensor.tautulli.attributes["stream_count_direct_play"] }}'
+    tautulli_direct_streams:
+      friendly_name: 'Direct Streams'
+      value_template: '{{ states.sensor.tautulli.attributes["stream_count_direct_stream"] }}'  
+    tautulli_wan_bandwidth:
+      friendly_name: 'WAN bandwidth'
+      value_template: '{{ states.sensor.tautulli.attributes["wan_bandwidth"] | multiply(0.001) | round(2) }}'
+      unit_of_measurement: "Mbps"
+    tautulli_lan_bandwidth:
+      friendly_name: 'LAN bandwidth'
+      value_template: '{{ states.sensor.tautulli.attributes["lan_bandwidth"] | multiply(0.001) | round(2) }}'
+      unit_of_measurement: "Mbps"
+    tautulli_total_bandwidth:
+      friendly_name: 'Total bandwidth'
+      value_template: '{{ states.sensor.tautulli.attributes["total_bandwidth"] | multiply(0.001) | round(2) }}'
+      unit_of_measurement: "Mbps"

@@ -6,8 +6,9 @@
     platform: state
     entity_id: alarm_control_panel.ring_alarm
     to: 'armed_away'
+    from: 'disarmed'
   action:
-    - service: notify.mobile_app_alex_s_phone
+    - service: notify.mobile_app_sm_g988u
       data:
         message: "Ring is Armed Away"
 
@@ -16,10 +17,40 @@
     platform: state
     entity_id: alarm_control_panel.ring_alarm
     to: 'disarmed'
+    from: 'armed_away'
   action:
-    - service: notify.mobile_app_alex_s_phone
-      data:
+    - service: notify.mobile_app_sm_g988u
+      data_template:
         message: "Ring is Disarmed"
+
+#- alias: Test Actionable Notifications
+#  trigger:
+#    - platform: state
+#      entity_id: alarm_control_panel.ring_alarm
+#      to: 'armed_away'
+#    - platform: state
+#      entity_id: alarm_control_panel.ring_alarm
+#      to: 'disarmed'
+#  action:
+#  - service: notify.mobile_app_sm_g975u
+#    data:
+#      message: 'Test Actionable Notification'
+#      title: 'Test'
+#      data:
+#        actions:
+#          - action: "test_off"
+#            title: "click me"
+
+#- alias: Test Notification Response
+#  trigger:
+#    - event_data:
+#        action: test_off
+#      event_type: mobile_app_notification_action
+#      platform: event
+#  action:
+#    - data:
+#        entity_id: light.kitchen_table
+#      service: light.turn_off
 
 #### TV Notifications for Locks and Alarm Changes ####
 

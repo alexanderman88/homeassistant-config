@@ -28,6 +28,7 @@ Family Room Lights:
   - light.family_floor_lamp
   - light.wled_family_ceiling
   - light.hallway_strip
+  - light.tv_lightstrip
 
 Decorations:
   entities:

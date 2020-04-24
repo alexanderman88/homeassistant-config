@@ -22,6 +22,41 @@ frontend:
     - /local/custom_ui/state-card-tiles.html
   themes: !include_dir_merge_named themes/
 
+lovelace:
+  resources:
+    - type: module
+      url: /local/mini-media-player-bundle.js?v=1.0.3
+    - type: module
+      url: /community_plugin/light-entity-row/light-entity-row.js
+    - type: js
+      url: /local/xiaomi-vacuum-card.js?v=2.1.0
+    - type: module
+      url: /community_plugin/weather-card/weather-card.js
+    - type: module
+      url: /community_plugin/simple-thermostat/simple-thermostat.js
+    - type: module
+      url: /community_plugin/mini-graph-card/mini-graph-card.js
+    - type: js
+      url: /community_plugin/upcoming-media-card/upcoming-media-card.js
+    - type: module
+      url: /community_plugin/compact-custom-header/compact-custom-header.js
+    - type: js
+      url: /community_plugin/vertical-stack-in-card/vertical-stack-in-card.js
+    - type: module
+      url: /community_plugin/lovelace-card-mod/card-mod.js
+    - type: module
+      url: /community_plugin/text-divider-row/text-divider-row.js
+    - type: module
+      url: /community_plugin/button-card/button-card.js
+    - type: js
+      url: /community_plugin/lovelace-card-mod/card-mod.js
+    - type: module
+      url: /community_plugin/lovelace-slider-entity-row/slider-entity-row.js
+    - type: module
+      url: /community_plugin/mini-media-player/mini-media-player-bundle.js
+    - type: module
+      url: /community_plugin/lovelace-multiple-entity-row/multiple-entity-row.js
+
 # Enables configuration UI
 config:
 
@@ -42,6 +77,7 @@ cloud:
         - light.family_floor_lamp
         - light.family_right_lamp
         - light.family_left_lamp
+        - light.tv_lightstrip
         - light.hogwarts
         - light.desk_lightstrip
         - light.desk_lamp
@@ -120,7 +156,6 @@ history:
 logbook:
 
 recorder:
-  purge_keep_days: 7
 
 # Enables a map showing the location of tracked devices
 map:
@@ -140,40 +175,37 @@ alexa_media:
       url: "amazon.com"
 
 media_player:
-  - platform: spotify
-    client_id: !secret spotify_client_id
-    client_secret: !secret spotify_client_password
-
   - platform: plex
   
   #- platform: roku
 
-  - platform: androidtv
-    name: Living Room Shield
-    device_class: androidtv
-    host: 192.168.1.138
-    adbkey: "/config/adbkey"
+ # - platform: androidtv
+ #   name: Living Room Shield
+ #   device_class: androidtv
+ #   host: 192.168.1.138
+ #   adbkey: "/config/adbkey"
 
   - platform: denonavr
     host: 192.168.1.144
     name: Family Room Receiver
   
-  - platform: vizio
-    host: 192.168.1.156
-    access_token: !secret vizio_access_token
-  
-  - platform: webostv
-    host: 192.168.1.139
-    name: livingroom_tv
-    filename: webostv.conf
-    turn_on_action:
-      service: wake_on_lan.send_magic_packet
-      data:
-        "mac": !secret webostv_mac
+ # - platform: vizio
+ #   host: 192.168.1.156
+ #   access_token: !secret vizio_access_token
+
 
 input_boolean:
   goaling:
     initial: off
+
+input_select:
+  washing_machine_status:
+    name: Washing Machine Status
+    options:
+      - Sensing
+      - Running
+      - Not Running
+    initial: Not Running
 
 zha:
   usb_path: /dev/ttyUSB1
@@ -186,12 +218,15 @@ zwave:
 
 stream:
 
+spotify:
+  client_id: !secret spotify_client_id
+  client_secret: !secret spotify_client_password
+
 camera:
   - platform: uvc
-    nvr: 192.168.1.38
+    nvr: 192.168.1.40
     key: !secret uvc_key
     password: !secret uvc_password
-  - platform: ring
   - platform: ffmpeg
     input: !secret wyze_rtsp
     name: Kitchen
@@ -221,15 +256,24 @@ mqtt:
     retain: false
 
 notify:
-  - platform: nfandroidtv
-    name: Master Bedroom
-    host: 192.168.1.54
+#  - platform: nfandroidtv
+#    name: Master Bedroom
+#    host: 192.168.1.54
   - platform: alexa_media
     name: alexa_media
-  - platform: webostv
-    host: 192.168.1.139
-    name: livingroom_tv
-    filename: webostv.conf
+  #- platform: webostv
+  #  host: 192.168.1.139
+  #  name: livingroom_tv
+  #  filename: webostv.conf
+
+webostv:
+  host: 192.168.1.139
+  name: livingroom_tv
+#    filename: webostv.conf
+#    turn_on_action:
+#      service: wake_on_lan.send_magic_packet
+#      data:
+#        "mac": !secret webostv_mac
 
 tplink:
   discovery: false
@@ -251,16 +295,18 @@ hacs:
 
 system_health:
 
-remote_homeassistant:
-  instances:
-  - host: http://192.168.1.137
-    port: 8123
-    api_password: !secret remote_homeassistant_api_password
+#remote_homeassistant:
+#  instances:
+#  - host: http://192.168.1.137
+#    port: 8123
+#    api_password: !secret remote_homeassistant_api_password
 
-roku:
-  - host: 192.168.1.90
+#roku:
+#  - host: 192.168.1.90
   
 wake_on_lan:
+
+breaking_changes:
 
 browser_mod:
   devices:
@@ -286,6 +332,8 @@ emulated_hue:
     light.family_floor_lamp:
       name: "Floor Lamp"
       hidden: false
+    light.tv_lightstrip:
+      hidden: false
     light.front_hallway:
       hidden: false
     light.hallway_strip:
@@ -308,6 +356,8 @@ emulated_hue:
     light.desk_lightstrip:
       hidden: false
     cover.blinds:
+      hidden: false
+    switch.fireplace:
       hidden: false
       
 

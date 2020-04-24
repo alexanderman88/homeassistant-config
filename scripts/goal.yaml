@@ -8,6 +8,7 @@ goal_start:
         - light.family_right_lamp
         - light.family_left_lamp
         - light.family_floor_lamp
+        - light.tv_lightstrip
         - light.hallway_strip
         - light.desk_lamp
         - light.desk_lightstrip
@@ -57,6 +58,12 @@ goal_loop:
           transition: 0.25
       - service: light.turn_on
         data:
+          entity_id: light.tv_lightstrip
+          rgb_color: [255, 0, 0]
+          brightness: 255
+          transition: 0.25
+      - service: light.turn_on
+        data:
           entity_id: light.family_floor_lamp
           rgb_color: [255, 0, 0]
           brightness: 255
@@ -99,6 +106,10 @@ goal_loop:
       - service: light.turn_off
         data:
           entity_id: light.desk_lightstrip
+          transition: 0.25
+      - service: light.turn_off
+        data:
+          entity_id: light.tv_lightstrip
           transition: 0.25
       - service: light.turn_off
         data:
@@ -160,6 +171,7 @@ game_start:
         - light.family_right_lamp
         - light.family_left_lamp
         - light.family_floor_lamp
+        - light.tv_lightstrip
         - light.hallway_strip
         - light.desk_lamp
         - light.desk_lightstrip

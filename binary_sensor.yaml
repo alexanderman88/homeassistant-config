@@ -1,1 +1,8 @@
-  - platform: ring
+
+#### Pantry Door Sensor ####
+  - platform: template
+    sensors:
+      pantry_door:
+        friendly_name: "Pantry Door"
+        device_class: door
+        value_template: "{{ is_state('sensor.vision_security_zd2105us_5_recessed_door_window_sensor_alarm_level', '255') }}"

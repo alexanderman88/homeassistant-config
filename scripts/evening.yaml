@@ -25,6 +25,11 @@ evening:
         color_temp: 335
     - service: light.turn_on
       data:
+        entity_id: light.tv_lighstrip
+        brightness: 150
+        color_temp: 335
+    - service: light.turn_on
+      data:
         entity_id: light.hallway_strip
         effect: solid
         brightness: 200
@@ -77,6 +82,11 @@ evening:
         entity_id: light.back_door
     - service: switch.turn_on
       entity_id: switch.ge_14284_outdoor_smart_switch_switch
+    
+    # Blinds
+    - service: cover.close_cover
+      data:
+        entity_id: cover.blinds
     
     # Decorations
     #- service: homeassistant.turn_on

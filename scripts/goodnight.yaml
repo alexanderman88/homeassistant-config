@@ -8,6 +8,8 @@ goodnight:
     - service: light.turn_off
       entity_id: light.family_floor_lamp
     - service: light.turn_off
+      entity_id: light.tv_lightstrip
+    - service: light.turn_off
       entity_id: light.wled_family_ceiling
     - service: light.turn_off
       entity_id: light.hallway_strip
@@ -36,5 +38,6 @@ goodnight:
         entity_id: light.danas_lamp
         transition: 1800
     - service: alarm_control_panel.alarm_arm_home
+      entity_id: alarm_control_panel.ring_alarm
     #- service: homeassistant.turn_off
     #  entity_id: group.decorations

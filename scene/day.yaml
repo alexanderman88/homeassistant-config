@@ -14,11 +14,20 @@
       state: on
       brightness: 255
       color_temp: 153
+    light.tv_lightstrip:
+      state: on
+      brightness: 255
+      color_temp: 153
     light.wled_family_ceiling:
       state: on
       rgb_color: [255, 255, 255]
       brightness: 255
       effect: '[FX=00] Solid'
+    light.hallway_strip:
+      state: on
+      effect: solid
+      brightness: 255
+      rgb_color: [255, 255, 255]
 
     # Kitchen Lights
     light.kitchen_sink:
@@ -29,6 +38,16 @@
     light.kitchen_ceiling_light:
       state: on
       brightness: 175
+    
+    # Desk Lights
+    light.desk_lamp:
+      state: on
+      brightness: 255
+      color_temp: 153
+    light.desk_lightstrip:
+      state: on
+      brightness: 255
+      color_temp: 153
     
     # Blinds
     cover.blinds:
